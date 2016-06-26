@@ -57,8 +57,4 @@ $RECYCLE.BIN/
 
 # Other #
 #########
-.idea
-.vagrant
-.dist
-.tmp
-src/bower_components
+additional-favicon

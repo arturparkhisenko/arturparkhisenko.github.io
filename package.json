@@ -1,0 +1,76 @@
+{
+  "name": "arturparkhisenko",
+  "description": "personal website",
+  "version": "1.0.0",
+  "author": "Artur Parkhisenko <ikeagold@gmail.com> (https://arturparkhisenko.github.io/)",
+  "main": "gulpfile.babel.js",
+  "jsnext:main": "gulpfile.babel.js",
+  "scripts": {
+    "gulp": "./node_modules/.bin/gulp",
+    "build": "set NODE_ENV=production&&gulp",
+    "dev": "set NODE_ENV=development&&gulp serve",
+    "prod": "set NODE_ENV=production&&gulp serve",
+    "copy": "gulp copy",
+    "styles": "gulp styles",
+    "scripts": "gulp scripts",
+    "lint:styles": "gulp lint:styles",
+    "lint:scripts": "gulp lint:scripts"
+  },
+  "stylelint": {
+    "rules": {
+      "at-rule-empty-line-before": "never",
+      "comment-empty-line-before": "never",
+      "comment-whitespace-inside": "never",
+      "indentation": 2
+    }
+  },
+  "keywords": [],
+  "homepage": "https://arturparkhisenko.github.io/",
+  "repository": "https://github.com/arturparkhisenko/arturparkhisenko.github.io",
+  "bugs": {
+    "url": "https://github.com/arturparkhisenko/arturparkhisenko.github.io/issues"
+  },
+  "license": "MIT",
+  "babel": {
+    "presets": [
+      "es2015"
+    ]
+  },
+  "devDependencies": {
+    "babel-preset-es2015-rollup": "^1.1.1",
+    "babel-preset-es2015": "^6.9.0",
+    "browser-sync": "^2.13.0",
+    "cssnano-cli": "^1.0.4",
+    "del": "^2.2.1",
+    "eslint": "^2.13.1",
+    "eslint-config-airbnb": "^9.0.1",
+    "eslint-plugin-html": "^1.5.1",
+    "eslint-plugin-import": "^1.9.2",
+    "gulp": "github:gulpjs/gulp#4.0",
+    "gulp-eslint": "^2.0.0",
+    "gulp-htmlmin": "^2.0.0",
+    "gulp-if": "^2.0.1",
+    "gulp-imagemin": "^3.0.1",
+    "gulp-load-plugins": "^1.2.4",
+    "gulp-minify-inline": "^0.2.1",
+    "gulp-newer": "^1.2.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-postcss": "^6.1.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-size": "^2.1.0",
+    "gulp-sourcemaps": "^2.0.0-alpha",
+    "gulp-stylelint": "^2.0.2",
+    "gulp-util": "^3.0.7",
+    "postcss-browser-reporter": "^0.5.0",
+    "postcss-cssnext": "^2.6.0",
+    "postcss-import": "^8.1.2",
+    "postcss-reporter": "^1.3.3",
+    "postcss-url": "^5.1.2",
+    "rollup": "^0.33.0",
+    "rollup-plugin-babel": "^2.6.1",
+    "rollup-plugin-commonjs": "^3.1.0",
+    "rollup-plugin-node-resolve": "^1.7.1",
+    "rollup-plugin-uglify": "^1.0.1",
+    "stylelint-config-standard": "^9.0.0"
+  }
+}
