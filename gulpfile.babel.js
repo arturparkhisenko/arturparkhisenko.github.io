@@ -9,7 +9,7 @@ import browserSync from 'browser-sync';
 import gulpStylelint from 'gulp-stylelint';
 import cssnano from 'cssnano';
 import postcssImport from 'postcss-import';
-import postcssUrl from 'postcss-url';
+// import postcssUrl from 'postcss-url';
 import postcssCssnext from 'postcss-cssnext';
 import postcssBrowserReporter from 'postcss-browser-reporter';
 import postcssReporter from 'postcss-reporter';
@@ -90,9 +90,9 @@ gulp.task('styles', () =>
       // path: ['./styles/**/*'],
       // from: './styles/main.css',
     }),
-    postcssUrl({
-      url: 'inline',
-    }),
+    // postcssUrl({
+    //   url: 'inline',
+    // }),
     postcssCssnext({
       browsers: '> 5%',
     }),

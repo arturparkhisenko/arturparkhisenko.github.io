@@ -10,26 +10,19 @@
   <meta name="author" content="Artur Parkhisenko">
   <meta name="application-name" content="Artur Parkhisenko">
 
-  <meta http-equiv="Content-Security-Policy" content="
-	default-src 'none';
-	child-src 'self';
-	manifest-src 'self';
-	script-src 'self' data: 'unsafe-inline' https://www.google-analytics.com/;
-	style-src 'self';
-	connect-src 'self' wss://localhost:3000/;
-	img-src 'self' data: https://source.unsplash.com/ https://images.unsplash.com/ https://www.google-analytics.com;">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: blob: 'unsafe-inline' 'unsafe-eval' wss://localhost:* https://arturparkhisenko.github.io https://images.unsplash.com/ https://www.google-analytics.com; connect-src 'self' wss://localhost:*; script-src 'self' 'unsafe-inline' data: https://www.google-analytics.com/; style-src 'self'; child-src 'self'; manifest-src 'self'; media-src 'self' blob:; img-src 'self' data: https://source.unsplash.com/ https://images.unsplash.com/ https://www.google-analytics.com;">
 
   <meta name="google-site-verification" content="RZMrzKt4gfp4dy-KC8JW6KFzKkN4h5iwPGMEWbGtoDo">
   <link rel="canonical" href="https://arturparkhisenko.github.io/">
   <meta name="url" content="https://arturparkhisenko.github.io/">
 
   <meta property="og:title" content="Artur Parkhisenko - Personal Site">
-  <meta property="og:description" content="Engineer || Geek">
+  <meta property="og:description" content="#engineer and #geek">
   <meta property="og:image" content="https://arturparkhisenko.github.io/android-chrome-192x192.png">
   <meta property="og:url" content="https://arturparkhisenko.github.io/">
 
   <meta name="twitter:title" content="Artur Parkhisenko - Personal Site">
-  <meta name="twitter:description" content="Engineer || Geek">
+  <meta name="twitter:description" content="#engineer and #geek">
   <meta name="twitter:image" content="https://arturparkhisenko.github.io/android-chrome-192x192.png">
   <meta name="twitter:card" content="summary_large_image">
 
@@ -65,8 +58,12 @@
   <!--[if lt IE 9]><meta http-equiv="X-UA-Compatible" content="IE=edge"><script src='//cdn.jsdelivr.net/g/html5shiv'></script><![endif]-->
 
   <link rel="dns-prefetch" href="https://pages.github.com/">
+  <link rel="preconnect" href="https://source.unsplash.com/">
+  <link rel="preconnect" href="https://images.unsplash.com/">
 
-  <link rel="stylesheet" href="styles/main.min.css">
+  <noscript>
+    <link rel="stylesheet" href="styles/main.min.css">
+  </noscript>
 
   <!-- <meta http-equiv="Expires" content="0">
   <meta http-equiv="Cache-Control" content="public"> -->
@@ -85,7 +82,8 @@
     <br/>
     <main role="main">
       <strong>&lt;/&gt;</strong>
-      <span itemprop="jobTitle">#engineer</span><!--  at <a href="https://livestream.com" target="_blank" itemprop="affiliation">LiveStream</a> --> &amp;&amp; #geek
+      <span itemprop="jobTitle">#engineer</span>
+      <!--  at <a href="https://livestream.com" target="_blank" itemprop="affiliation">LiveStream</a> -->&amp;&amp; #geek
       <!-- @ <a href="https://flickshine.com" target="_blank" itemprop="affiliation">FlickShine</a> -->
     </main>
     <br/>

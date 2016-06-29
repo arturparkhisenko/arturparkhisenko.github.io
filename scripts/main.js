@@ -3,6 +3,22 @@ import { hue } from './module-effects';
 
 console.info('%c ;) Hi there! ', 'background: #333; color: #DCCD69');
 
+// async-css-------------------------------------------------------------------
+const cb = () => {
+  const l = document.createElement('link');
+  l.rel = 'stylesheet';
+  l.href = '../styles/main.min.css';
+  const h = document.getElementsByTagName('head')[0];
+  h.parentNode.insertBefore(l, h);
+};
+const raf = requestAnimationFrame || window.mozRequestAnimationFrame ||
+  window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+if (raf) {
+  raf(cb);
+} else {
+  window.addEventListener('load', cb);
+}
+
 // device-api------------------------------------------------------------------
 
 // mouse trap
@@ -81,7 +97,9 @@ document.querySelector('.screen').addEventListener('click', (event) => {
 // offline-support-------------------------------------------------------------
 
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('./../sw.js').then((registration) => {
+  navigator.serviceWorker.register('./../sw.js', {
+    scope: './'
+  }).then((registration) => {
     let isUpdate = false;
     if (registration.active) {
       isUpdate = true;
@@ -101,10 +119,26 @@ if ('serviceWorker' in navigator) {
           console.log('Site new serviceWorker state: ', this.state);
         }
       };
+      // if (navigator.serviceWorker.controller) {
+      //   var installingWorker = registration.installing;
+      //   installingWorker.onstatechange = function() {
+      //     switch (installingWorker.state) {
+      //       case 'installed':
+      //         break;
+      //       case 'redundant':
+      //         throw new Error('The installing ' +
+      //           'service worker became redundant.');
+      //       default:
+      //         // Ignore
+      //     }
+      //   };
+      // }
     };
   }, (err) => {
     console.log('serviceWorker', err);
   });
+} else {
+  console.log('service worker is not supported');
 }
 
 // google-analytics------------------------------------------------------------
