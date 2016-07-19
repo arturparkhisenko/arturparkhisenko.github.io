@@ -1,7 +1,7 @@
 :root {
   --fontStack: -apple-system, BlinkMacSystemFont, ".SFNSDisplay-Regular", ".SFNSText-Regular", "SF UI Text", "San Francisco", "Noto Sans", "Helvetica Neue", "Roboto", "Droid Sans", "Oxygen", "Lucida Grande", "Segoe UI", "Fira Sans", Ubuntu, Cantarell, Helvetica, Arial, sans-serif;
   --fontColor: #fafafa;
-  --fontSize: 1em;
+  --fontSize: 0.7em;
   --colorLink: red;
   --colorLinkHover: green;
   /*Colors:

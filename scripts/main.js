@@ -98,16 +98,16 @@ document.querySelector('.screen').addEventListener('click', (event) => {
 
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('./../sw.js', {
-    scope: './'
+    scope: './',
   }).then((registration) => {
     let isUpdate = false;
     if (registration.active) {
       isUpdate = true;
     }
-    registration.onupdatefound = (event) => {
+    registration.onupdatefound = (eventUpdate) => {
       console.log('New site update avaliable ;)');
       // not `=>` because it doesn't create scope
-      registration.installing.onstatechange = function(event) {
+      registration.installing.onstatechange = function (eventStateChange) {
         if (this.state === 'installed') {
           console.log('serviceWorker installed!');
           if (isUpdate) {

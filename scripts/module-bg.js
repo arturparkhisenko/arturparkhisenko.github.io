@@ -46,10 +46,13 @@ export default class BackgroundGenerator {
       }
     }, false);
     this.elBgImg.src = `https://source.unsplash.com/${newCw}x${newCh}`;
+    // this.elBgImg.src = `https://unsplash.it/${newCw}/${newCh}/?random`;
+    // this.elBgImg.src = `http://loremflickr.com/${newCw}/${newCh}/?random`;
   }
 
   setBg() {
     if (navigator.onLine) {
+      console.info('setBg');
       this.installBg();
     } else {
       console.warn('Sorry, cant set new and beautiful background, because you\'re offline');

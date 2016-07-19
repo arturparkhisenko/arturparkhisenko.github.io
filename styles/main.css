@@ -18,7 +18,7 @@ body {
   padding: 0;
   background: #222 url("../images/dino_js.svg") no-repeat fixed center / contain content-box;
   color: var(--fontColor, #fafafa);
-  font-size: var(--fontSize, 1em);
+  font-size: var(--fontSize, 0.7em);
   font-family: var(--fontStack, "Helvetica, Arial, sans-serif");
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeSpeed;
@@ -145,7 +145,7 @@ small > a {
 }
 @media all and (min-width: 40em) {
   html {
-    font-size: 140%;
+    font-size: 200%;
   }
 
   .screen {
