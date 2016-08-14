@@ -1,8 +1,6 @@
 // LICENSE.md
 import gulp from 'gulp';
-import { rollup } from 'rollup';
-import babel from 'rollup-plugin-babel';
-import uglify from 'rollup-plugin-uglify';
+import webpack from 'webpack';
 import del from 'del';
 import gulpLoadPlugins from 'gulp-load-plugins';
 import browserSync from 'browser-sync';
@@ -52,28 +50,63 @@ gulp.task('lint:styles', () =>
   }))
 );
 
-gulp.task('scripts', () =>
-  rollup({
-    entry: './scripts/main.js',
+gulp.task('scripts', (cb) => {
+  webpack({
+    entry: {
+      main: [
+        './scripts/main.js',
+      ],
+    },
+    devtool: 'source-map', // cheap-module-source-map
+    watch: false,
+    output: {
+      path: './scripts',
+      filename: '[name].min.js',
+    },
+    module: {
+      loaders: [{
+        test: /\.js$/,
+        exclude: /(node_modules|bower_components)/,
+        loader: 'uglify!babel?presets[]=es2015',
+      }],
+    },
+    'uglify-loader': {
+      mangle: false,
+    },
     plugins: [
-      babel({
-        exclude: 'node_modules/**',
-        babelrc: false,
-        presets: 'es2015-rollup',
+      new webpack.NoErrorsPlugin(),
+      new webpack.optimize.DedupePlugin(),
+      new webpack.optimize.UglifyJsPlugin({
+        // warnings: false,
+        compress: { // or compressor
+          warnings: false,
+          // pure_getters: true,
+          // unsafe: true,
+          // unsafe_comps: true, // not documented
+          // screw_ie8: true // not documented
+        },
+        output: {
+          comments: false,
+          // semicolons: true
+        },
       }),
-      uglify(),
     ],
-  })
-  .then(bundle => bundle.write({
-    // output format - 'amd', 'cjs', 'es6', 'iife', 'umd'
-    format: 'iife',
-    dest: './scripts/main.min.js',
-    sourceMap: true,
-  }))
-  .then(() => {
-    // console.log('JS bundle created');
-  })
-);
+  },
+  (err, stats) => {
+    if (err) {
+      throw new $.util.PluginError('webpack', err);
+    }
+    $.util.log('[webpack]', stats.toString({
+      // output options
+      // https://github.com/webpack/docs/wiki/node.js-api
+      chunks: false,
+      colors: true,
+    }));
+    $.util.log('[webpack]', 'Packed successfully!');
+  });
+
+  cb();
+});
 
 gulp.task('styles', () =>
   gulp.src([
@@ -168,7 +201,7 @@ gulp.task('html', () =>
 const watch = () => {
   browserSync({
     notify: false,
-    logPrefix: '👀',
+    logPrefix: 'watch',
     https: true,
     server: './',
     files: [
