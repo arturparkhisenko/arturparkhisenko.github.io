@@ -107,7 +107,7 @@ if ('serviceWorker' in navigator) {
     registration.onupdatefound = (eventUpdate) => {
       console.log('New site update avaliable ;)');
       // not `=>` because it doesn't create scope
-      registration.installing.onstatechange = function (eventStateChange) {
+      registration.installing.onstatechange = function(eventStateChange) {
         if (this.state === 'installed') {
           console.log('serviceWorker installed!');
           if (isUpdate) {
