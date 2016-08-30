@@ -112,9 +112,10 @@ gulp.task('styles', () =>
   gulp.src([
     './styles/main.css',
     // ], { read: false }
-  ], {
-    since: gulp.lastRun('styles'),
-  })
+  ])
+  // ], {
+  //   since: gulp.lastRun('styles'),
+  // })
   .pipe($.plumber())
   // .pipe($.newer('./styles'))
   .pipe($.sourcemaps.init())
@@ -127,7 +128,8 @@ gulp.task('styles', () =>
     //   url: 'inline',
     // }),
     postcssCssnext({
-      browsers: '> 5%',
+      browsers: '> 1%, last 2 versions, Firefox ESR',
+      warnForDuplicates: false,
     }),
     cssnano({
       safe: true,
@@ -160,21 +162,6 @@ gulp.task('images', () =>
     title: 'images',
   }))
 );
-
-// gulp.task('copy', () =>
-//   gulp.src([
-//     './**/*.{html,ico}',
-//     './**/*.{txt,ico}',
-//     '!./test',
-//     '!./precache.json',
-//   ], {
-//     dot: true,
-//     since: gulp.lastRun('copy'),
-//   }).pipe(gulp.dest('./'))
-//   .pipe($.size({
-//     title: 'copy',
-//   }))
-// );
 
 gulp.task('html', () =>
   gulp.src([
@@ -243,7 +230,6 @@ gulp.task('serve',
     gulp.parallel(
       gulp.series('lint:scripts', 'scripts'),
       gulp.series('lint:styles', 'styles'),
-      // 'images', 'copy'
       // 'images',
       'html'
     ),
@@ -256,8 +242,7 @@ gulp.task('default', gulp.series('clean',
   gulp.parallel(
     gulp.series('lint:scripts', 'scripts'),
     gulp.series('lint:styles', 'styles'),
-    // 'images', 'copy', 'html'
-    // 'images',
+    'images',
     'html'
   )
 ));
