@@ -1,7 +1,7 @@
-const cacheName = '20160830-0.0.8';
+const cacheName = '20161015-1.0.0';
 
-self.addEventListener('install', e => {
-  e.waitUntil(
+self.addEventListener('install', (event) => {
+  event.waitUntil(
     caches.open(cacheName).then(cache => cache.addAll([
       '/',
       '/index.html',
@@ -13,7 +13,7 @@ self.addEventListener('install', e => {
   );
 });
 
-self.addEventListener('fetch', event => {
+self.addEventListener('fetch', (event) => {
   event.respondWith(
     caches.match(event.request).then(res => res || fetch(event.request))
   );

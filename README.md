@@ -1,7 +1,7 @@
 # :space_invader: Artur Parkhisenko, personal website
 
+- `npm start`
 - `npm run build`
-- `npm run dev`
 
 ## before build
 

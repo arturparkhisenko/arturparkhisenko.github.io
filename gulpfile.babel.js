@@ -9,7 +9,7 @@ import cssnano from 'cssnano';
 import postcssImport from 'postcss-import';
 // import postcssUrl from 'postcss-url';
 import postcssCssnext from 'postcss-cssnext';
-import postcssBrowserReporter from 'postcss-browser-reporter';
+// import postcssBrowserReporter from 'postcss-browser-reporter';
 import postcssReporter from 'postcss-reporter';
 
 const $ = gulpLoadPlugins();
@@ -134,7 +134,7 @@ gulp.task('styles', () =>
     cssnano({
       safe: true,
     }),
-    postcssBrowserReporter(),
+    // postcssBrowserReporter(),
     postcssReporter(),
   ]))
   .pipe($.rename({
