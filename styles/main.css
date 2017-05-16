@@ -18,13 +18,15 @@ body {
   padding: 0;
   background: #222 url("../images/dino_js.svg") no-repeat fixed center / contain content-box;
   color: var(--fontColor, #fafafa);
-  font-size: var(--fontSize, 0.7em);
+  font-size: var(--fontSize, 1em);
   font-family: var(--fontStack, "Helvetica, Arial, sans-serif");
+  direction: ltr;
   -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeSpeed;
+  text-rendering: optimizeLegibility;
   flex: 1 0 auto;
   justify-content: center;
   align-items: center;
+  line-height: 1.15;
 }
 
 .background {
@@ -39,54 +41,19 @@ body {
   will-change: opacity;
 }
 
-.notice-colors {
-  position: absolute;
-  bottom: 1em;
-  left: 1em;
-  display: none;
-  font-size: 0.6em;
-  opacity: 0.3;
-}
-
-.notice-bg {
-  position: absolute;
-  right: 1em;
-  bottom: 1em;
-  display: none;
-  font-size: 0.8em;
-  opacity: 0.6;
-  mix-blend-mode: exclusion;
-}
-
 .screen {
   position: relative;
   z-index: 1;
   display: flex;
   flex-direction: column;
   margin: 2%;
-  padding: 7% 4%;
-  /*mix-blend-mode: exclusion;*/
+  padding: 5%;
   background-color: rgba(0, 0, 0, 0.8);
-  /*background: inherit;*/
   color: rgba(240, 240, 240, 0.8);
   justify-content: center;
   align-items: center;
-  /*will-change: transform;*/
 }
-/*.screen::before {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: -1;
-  display: block;
-  overflow: hidden;
-  background: inherit;
-  content: "";
-  filter: blur(3px) brightness(0.3);
-  mix-blend-mode: exclusion;
-}*/
+
 footer,
 header,
 main {
@@ -107,22 +74,37 @@ em {
   font-size: 1.4em;
 }
 
+footer {
+  display: flex;
+  flex-direction: column;
+}
+
+footer small {
+  justify-content: space-between;
+}
+
+/**
+ * normalize.css:
+ * 1. Remove the gray background on active links in IE 10.
+ * 2. Remove gaps in links underline in iOS 8+ and Safari 8+.
+ */
+a {
+  background-color: transparent;
+  -webkit-text-decoration-skip: objects;
+}
+
 a,
 a:visited {
   margin: 0.3em 0.2em 0;
   padding: 2px 10px;
   color: rgba(220, 220, 220, 0.9);
-  /*text-decoration: none;*/
   cursor: pointer;
   transition: all 0.1s;
-  /*border-bottom: 1px dotted transparent;*/
-  /*border-bottom: 1px dotted #fafafa;*/
 }
 
 a:active,
 a:hover {
   color: #f7df31;
-  /*border-bottom: 1px dotted #f7df31;*/
 }
 
 address > a,
@@ -134,18 +116,17 @@ address {
   margin-bottom: 0.5em;
 }
 
-small > a {
-  font-size: 0.8em;
-  opacity: 0.8;
-  /*color: #f7df31;*/
+small {
+  display: flex;
 }
 
 ::selection {
   background: #f7df31;
 }
-@media all and (min-width: 40em) {
+
+@media all and (min-width: 40em) and (min-height: 20em) {
   html {
-    font-size: 200%;
+    font-size: 140%;
   }
 
   .screen {
@@ -158,19 +139,32 @@ small > a {
   }
 }
 
-.widgets {
-  position: absolute;
-  top: 5px;
-  right: 10px;
+.bottom-section {
+  display: flex;
+  align-content: space-between;
+  flex-grow: 1;
+  font-size: 0.6em;
+}
+
+.license {
+  display: inline-flex;
+  align-items: center;
+  margin-right: 1em;
+  padding: 0;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+
+.license:hover {
+  opacity: 1;
 }
 
 .jack {
-  position: absolute;
-  right: 1em;
-  bottom: 1em;
-  font-size: 0.6em;
-  opacity: 0.3;
+  display: inline-flex;
+  opacity: 0.6;
   transition: opacity 0.2s;
+  align-items: center;
+  margin-left: 1em;
 }
 
 .jack:hover {
@@ -178,19 +172,18 @@ small > a {
 }
 
 .jack a {
-  display: flex;
-  padding-right: 2em;
+  display: inline-flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
   border: 0;
   color: rgba(220, 220, 220, 0.9);
   line-height: 1em;
-  align-items: center;
 }
 
 .hole {
-  position: absolute;
-  position: absolute;
-  top: 0;
-  right: 0;
+  position: relative;
+  margin-left: 5px;
   overflow: hidden;
   width: 1.4em;
   height: 1.4em;
@@ -198,8 +191,6 @@ small > a {
   background: #b62fd1;
   background-image: linear-gradient(115deg, #a0038b, #3690c3, #89b225, #fdfd00, #fd0000);
   content: "";
-  transform: rotate(0);
-  animation: magic 7s linear infinite normal both;
 }
 
 .hole::after {
@@ -212,12 +203,9 @@ small > a {
   background-color: #000;
   content: "";
 }
-@keyframes magic {
-  100% {
-    transform: rotate(360deg);
-  }
-}
-/*normalized print*/
+
+/* normalized print */
+
 @media print {
   body {
     background: transparent !important;

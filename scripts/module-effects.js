@@ -1,8 +1,14 @@
+/**
+ * randomIntFromInterval
+ * @param  {number} min
+ * @param  {number} max
+ * @return {number}
+ */
 const randomIntFromInterval = (min, max) =>
   Math.floor(Math.random() * (max - min + 1) + min);
 
 /**
- * [hue description]
+ * hue
  * @param  {string} selector
  * @param  {number} deg
  * @param  {boolean} random = false
@@ -18,6 +24,10 @@ export function hue(selector, deg, random = false) {
   }
 }
 
-// export default function effects() {
-//   return Object.assign({}, hue);
-// }
+/**
+ * effects
+ * @return {object} new with method hue
+ */
+export default function effects() {
+  return Object.assign(Object.create(null), hue);
+}

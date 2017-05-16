@@ -1,9 +1,9 @@
 {
   "lang": "en",
-  "name": "Artur Parkhisenko",
-  "short_name": "Artur P.",
-  "background_color": "#222",
-  "theme_color": "#8170a7",
+  "name": "Artur",
+  "short_name": "Artur",
+  "background_color": "#16161d",
+  "theme_color": "#16161d",
   "start_url": "/index.html",
   "display": "standalone",
   "icons": [

@@ -1,14 +1,26 @@
 :root {
-  --fontStack: -apple-system, BlinkMacSystemFont, ".SFNSDisplay-Regular", ".SFNSText-Regular", "SF UI Text", "San Francisco", "Noto Sans", "Helvetica Neue", "Roboto", "Droid Sans", "Oxygen", "Lucida Grande", "Segoe UI", "Fira Sans", Ubuntu, Cantarell, Helvetica, Arial, sans-serif;
+
+  /* --fontStack: font-family: System, Fixedsys, Consolas, monospace; */
+  --fontStack: BlinkMacSystemFont, -apple-system, ".SFNSDisplay-Regular", ".SFNSText-Regular", "SF UI Text", "San Francisco", "Noto Sans", "Helvetica Neue", "Roboto", "Droid Sans", "Oxygen", "Lucida Grande", "Segoe UI", "Fira Sans", Ubuntu, Cantarell, Helvetica, Arial, sans-serif;
   --fontColor: #fafafa;
-  --fontSize: 0.7em;
+  --fontSize: 1em;
   --colorLink: red;
   --colorLinkHover: green;
-  /*Colors:
-      special:
-        #02f8b3, #1fab8c
-        #cbf802, #9cab1e
-        #8c5888, #4f2f4c
-      usual:
-        #ff4e00, #fc0400*/
+
+  /* Colors:
+    special:
+      #02f8b3, #1fab8c
+      #cbf802, #9cab1e
+      #8c5888, #4f2f4c
+
+    usual:
+      #ff4e00, #fc0400
+
+    special:
+      #6F36CC
+      #270C3D
+      #5A2BA1
+      #6542CD
+      #937BDC
+  */
 }

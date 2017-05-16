@@ -1,5 +1,12 @@
+/**
+ * BackgroundGenerator
+ * @type {class}
+ */
 export default class BackgroundGenerator {
 
+  /**
+   * constructor
+   */
   constructor() {
     this.cw = window.innerWidth || document.documentElement.clientWidth ||
       document.body.clientWidth || screen.width;
@@ -17,12 +24,18 @@ export default class BackgroundGenerator {
     }
   }
 
+  /**
+   * init
+   */
   init() {
     window.addEventListener('online', this.setBg);
     window.addEventListener('offline', this.setBg);
     this.setBg();
   }
 
+  /**
+   * installBg
+   */
   installBg() {
     const newCw = this.cw + Math.round(Math.random());
     const newCh = this.ch + Math.round(Math.random());
@@ -50,12 +63,15 @@ export default class BackgroundGenerator {
     // this.elBgImg.src = `http://loremflickr.com/${newCw}/${newCh}/?random`;
   }
 
+  /**
+   * setBg
+   */
   setBg() {
     if (navigator.onLine) {
       console.info('setBg');
       this.installBg();
     } else {
-      console.warn('Sorry, cant set new and beautiful background, because you\'re offline');
+      console.warn('Sorry, you\'re offline');
     }
   }
 

@@ -1,11 +1,12 @@
 {
-  "extends": "airbnb/base",
+  "extends": ["eslint:recommended", "google"],
   "env": {
     "browser": true,
-    "es6": true
+    "es6": true,
+    "node": true
   },
   "parserOptions": {
-    "ecmaVersion": 2017,
+    "ecmaVersion": 8,
     "sourceType": "module"
   },
   "plugins": [
@@ -14,6 +15,7 @@
   ],
   "rules": {
     "no-console": 0,
-    "no-param-reassign": 0
+    "no-param-reassign": 0,
+    "comma-dangle": ["error", "never"]
   }
 }
