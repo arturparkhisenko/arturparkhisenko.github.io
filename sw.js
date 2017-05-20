@@ -1,4 +1,4 @@
-const cacheName = '20170518-1.0.0';
+const cacheName = '20170519-1.0.0';
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
@@ -15,10 +15,11 @@ self.addEventListener('install', (event) => {
 self.addEventListener('activate', (event) => {
   /**
    * onActivate
+   * @return {object} - promise
    */
   function onActivate() {
     // cleanup old caches
-    caches.keys().then((savedCacheNames) => {
+    return caches.keys().then((savedCacheNames) => {
       return Promise.all(
         savedCacheNames.map((savedCacheName) => {
           if (cacheName !== savedCacheName) {
@@ -30,9 +31,9 @@ self.addEventListener('activate', (event) => {
   }
   event.waitUntil(
     onActivate()
-     // This makes the SW take effect immediately
-     // on any open pages in scope
-     .then( () => self.clients.claim() )
+    // This makes the SW take effect immediately
+    // on any open pages in scope
+    .then(() => self.clients.claim())
   );
 });
 

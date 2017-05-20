@@ -209,7 +209,7 @@ const watch = () => {
   browserSync({
     notify: false,
     logPrefix: 'watch',
-    https: true,
+    // https: true,
     server: './',
     files: [
       './**/*.html',
@@ -219,9 +219,9 @@ const watch = () => {
       './scripts/main.js',
       './scripts/module-bg.js',
       './scripts/module-effects.js'
-    ]
-    // port: 3000,
-    // browser: 'chrome',
+    ],
+    port: 8080,
+    browser: 'google chrome'
   });
 
   gulp.watch(['./**/*.html'], gulp.series('html'));
