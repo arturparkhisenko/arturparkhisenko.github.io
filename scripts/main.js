@@ -1,5 +1,7 @@
 import BackgroundGenerator from './module-bg';
-import {hue} from './module-effects';
+import {
+  hue
+} from './module-effects';
 
 console.info('%c ;) Hi there! ', 'background: #333; color: #DCCD69');
 
@@ -41,7 +43,7 @@ document.querySelector('.screen').addEventListener('click', (event) => {
 
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('./../sw.js', {
-    scope: './'
+    scope: '/'
   }).then((registration) => {
     let isUpdate = false;
     if (registration.active) {
@@ -62,24 +64,10 @@ if ('serviceWorker' in navigator) {
           console.log('Site new serviceWorker state: ', this.state);
         }
       };
-      // if (navigator.serviceWorker.controller) {
-      //   var installingWorker = registration.installing;
-      //   installingWorker.onstatechange = function() {
-      //     switch (installingWorker.state) {
-      //       case 'installed':
-      //         break;
-      //       case 'redundant':
-      //         throw new Error('The installing ' +
-      //           'service worker became redundant.');
-      //       default:
-      //         // Ignore
-      //     }
-      //   };
-      // }
     };
-  }, (err) => {
-    console.log('serviceWorker', err);
+  }).catch((err) => {
+    console.error(err);
   });
 } else {
-  console.log('service worker is not supported');
+  console.log('service workers is not supported');
 }
