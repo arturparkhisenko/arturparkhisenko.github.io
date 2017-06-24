@@ -3,7 +3,6 @@
  * @type {class}
  */
 export default class BackgroundGenerator {
-
   /**
    * constructor
    */
@@ -74,5 +73,4 @@ export default class BackgroundGenerator {
       console.warn('Sorry, you\'re offline');
     }
   }
-
 }

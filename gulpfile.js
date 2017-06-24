@@ -80,7 +80,9 @@ gulp.task('scripts', (cb) => {
                       'safari >= 7',
                       'Firefox ESR'
                     ]
-                  }
+                  },
+                  'modules': false,
+                  'loose': true
                 }]
               ]
             }
@@ -88,28 +90,15 @@ gulp.task('scripts', (cb) => {
         }]
       },
       plugins: [
-        new webpack.NoEmitOnErrorsPlugin(),
-        new webpack.LoaderOptionsPlugin({
-          minimize: true,
-          debug: false,
-          options: {
-            context: __dirname
-          }
-        }),
         new webpack.optimize.UglifyJsPlugin({
-          // warnings: false,
-          compress: { // or compressor
+          compress: {
             warnings: false
-            // pure_getters: true,
-            // unsafe: true,
-            // unsafe_comps: true, // not documented
-            // screw_ie8: true // not documented
           },
           output: {
             comments: false
-            // semicolons: true
           }
-        })
+        }),
+        new webpack.optimize.ModuleConcatenationPlugin()
       ]
     },
     (err, stats) => {
