@@ -25,7 +25,41 @@ if (raf) {
 // use-modules-----------------------------------------------------------------
 
 const bgg = new BackgroundGenerator();
-bgg.init();
+
+// bg init --------------------------------------------------------------------
+
+/**
+ * addEventListenerOnce
+ * @param {object} target
+ * @param {string} type
+ * @param {function} listener
+ */
+function addEventListenerOnce(target, type, listener) {
+  target.addEventListener(type, function fn(event) {
+    target.removeEventListener(type, fn);
+    listener(event);
+  }, {
+    once: true
+  });
+}
+
+addEventListenerOnce(
+  document.querySelector('body'),
+  'mouseover',
+  function(event) {
+    console.log('Background is loading by mouseover');
+    bgg.init(); // load background only on mouse move
+  }
+);
+
+addEventListenerOnce(
+  document.querySelector('body'),
+  'touchstart',
+  function(event) {
+    console.log('Background is loading by touchstart');
+    bgg.init(); // load background only on touch
+  }
+);
 
 // clicks----------------------------------------------------------------------
 

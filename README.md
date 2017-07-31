@@ -5,8 +5,7 @@
 
 ## before build
 
-- inspect in devtools and audit (perf/ally/manifest)
-- inspect with [a11y.css](https://ffoodd.github.io/a11y.css/) and [aXe](https://chrome.google.com/webstore/detail/axe/lhdoppojpmngadmnindnejefpokejbdd)
+- inspect in devtools and audit (perf/a11y/manifest)
 
 ## after build
 
@@ -15,5 +14,6 @@
 - [speed](https://developers.google.com/speed/pagespeed/insights/?url=https%3A%2F%2Farturparkhisenko.github.io%2F&tab=mobile)
 - [browserdiet.com/calories](https://browserdiet.com/calories/)
 - [csp-evaluator](https://csp-evaluator.withgoogle.com/)
+- [testmysite.withgoogle](https://testmysite.withgoogle.com)
 
 ## [MIT License](LICENSE.md)

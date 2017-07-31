@@ -28,7 +28,7 @@ export default class BackgroundGenerator {
    */
   init() {
     window.addEventListener('online', this.setBg);
-    window.addEventListener('offline', this.setBg);
+    // window.addEventListener('offline', this.setBg);
     this.setBg();
   }
 
