@@ -1,4 +1,4 @@
-const cacheName = '20170730-1.0.0';
+const cacheName = '20171118-1.0.0';
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
@@ -6,8 +6,7 @@ self.addEventListener('install', (event) => {
       '/',
       '/images/dino_js.svg',
       '/styles/main.min.css',
-      '/scripts/main.min.js',
-      '/manifest.json'
+      '/scripts/main.min.js'
     ]).then(() => self.skipWaiting()))
   );
 });

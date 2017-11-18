@@ -1,11 +1,8 @@
-import BackgroundGenerator from './module-bg';
-import {
-  hue
-} from './module-effects';
-
 console.info('%c ;) Hi there! ', 'background: #333; color: #DCCD69');
 
-// async-css-------------------------------------------------------------------
+const elBody = document.querySelector('body');
+
+// async-css-----------------------------
 
 const cb = () => {
   const l = document.createElement('link');
@@ -14,20 +11,96 @@ const cb = () => {
   const h = document.getElementsByTagName('head')[0];
   h.parentNode.insertBefore(l, h);
 };
-const raf = requestAnimationFrame || window.mozRequestAnimationFrame ||
-  window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+const raf = requestAnimationFrame || window.mozRequestAnimationFrame
+  || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
 if (raf) {
   raf(cb);
 } else {
   window.addEventListener('load', cb);
 }
 
-// use-modules-----------------------------------------------------------------
+// background ---------------------------
+
+/**
+ * BackgroundGenerator
+ * @type {class}
+ */
+class BackgroundGenerator {
+  /**
+   * constructor
+   */
+  constructor() {
+    this.cw = window.innerWidth ||
+    document.documentElement.clientWidth ||
+    document.body.clientWidth || screen.width;
+    this.ch = window.innerHeight ||
+    document.documentElement.clientHeight ||
+    document.body.clientHeight || screen.height;
+    this.elBgImg = null;
+
+    // remove polyfill mdn
+    if (!('remove' in Element.prototype)) {
+      Element.prototype.remove = function remove() {
+        if (this.parentNode) {
+          this.parentNode.removeChild(this);
+        }
+      };
+    }
+  }
+
+  /**
+   * init
+   */
+  init() {
+    window.addEventListener('online', this.setBg);
+    // window.addEventListener('offline', this.setBg);
+    this.setBg();
+  }
+
+  /**
+   * installBg
+   */
+  installBg() {
+    const newCw = this.cw + Math.round(Math.random() * 10);
+    const newCh = this.ch + Math.round(Math.random() * 10);
+
+    const elPre = document.querySelector('.background');
+    if (elPre) {
+      elPre.style.opacity = '1';
+    }
+    const elPreScreen = document.querySelector('.screen');
+
+    this.elBgImg = document.createElement('img');
+    this.elBgImg.classList.add('background');
+    this.elBgImg.setAttribute('alt', 'background');
+    this.elBgImg.addEventListener('load', () => {
+      document.body.insertBefore(this.elBgImg, elPre || elPreScreen);
+      if (elPre) {
+        elPre.style.opacity = '0';
+        setTimeout(() => {
+          elPre.remove();
+        }, 400);
+      }
+    }, false);
+    this.elBgImg.src = `https://source.unsplash.com/${newCw}x${newCh}`;
+  }
+
+  /**
+   * setBg
+   */
+  setBg() {
+    if (navigator.onLine) {
+      console.info('setBg');
+      this.installBg();
+    } else {
+      console.warn('Sorry, you\'re offline');
+    }
+  }
+}
 
 const bgg = new BackgroundGenerator();
 
-// bg init --------------------------------------------------------------------
-
+// bg init ------------------------------
 /**
  * addEventListenerOnce
  * @param {object} target
@@ -38,47 +111,30 @@ function addEventListenerOnce(target, type, listener) {
   target.addEventListener(type, function fn(event) {
     target.removeEventListener(type, fn);
     listener(event);
-  }, {
-    once: true
-  });
+  }, {once: true});
 }
 
-addEventListenerOnce(
-  document.querySelector('body'),
-  'mouseover',
-  function(event) {
-    console.log('Background is loading by mouseover');
-    bgg.init(); // load background only on mouse move
-  }
-);
+addEventListenerOnce(elBody, 'mouseover', function(event) {
+  console.log('Background is loading by mouseover');
+  bgg.init(); // load background only on mouse move
+});
 
-addEventListenerOnce(
-  document.querySelector('body'),
-  'touchstart',
-  function(event) {
-    console.log('Background is loading by touchstart');
-    bgg.init(); // load background only on touch
-  }
-);
+addEventListenerOnce(elBody, 'touchstart', function(event) {
+  console.log('Background is loading by touchstart');
+  bgg.init(); // load background only on touch
+});
 
-// clicks----------------------------------------------------------------------
+// clicks--------------------------------
 
-document.querySelector('body').addEventListener('click', () => {
+elBody.addEventListener('click', () => {
   bgg.setBg();
 }, false);
 
-document.querySelector('.screen').addEventListener('click', (event) => {
-  // hue(selector, deg, random = false)
-  hue('.background', 0, true);
-  event.stopPropagation();
-}, false);
-
-// offline-support-------------------------------------------------------------
+// offline-support-----------------------
 
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('./../sw.js', {
-    scope: '/'
-  }).then((registration) => {
+  navigator.serviceWorker.register(
+    './../sw.js', {scope: '/'}).then((registration) => {
     let isUpdate = false;
     if (registration.active) {
       isUpdate = true;

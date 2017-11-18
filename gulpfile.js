@@ -7,40 +7,30 @@ const gulpLoadPlugins = require('gulp-load-plugins');
 const browserSync = require('browser-sync');
 const gulpStylelint = require('gulp-stylelint');
 const cssnano = require('cssnano');
-const postcssImport = require('postcss-import');
-// const postcssUrl = require('postcss-url');
 const postcssCssnext = require('postcss-cssnext');
-// const postcssBrowserReporter = require('postcss-browser-reporter');
 const postcssReporter = require('postcss-reporter');
-
 const $ = gulpLoadPlugins();
-// const reload = browserSync.reload;
 
-gulp.task('clean', () => del(['.tmp', 'dist'], {
+gulp.task('clean', () => del(['dist'], {
   dot: true
 }));
 
 gulp.task('lint:scripts', () =>
   gulp.src([
     './scripts/**/*.js',
-    // './**/*.html',
     'gulpfile.js',
     '!./scripts/**/*.min.js*',
     '!node_modules/**'
   ])
   .pipe($.eslint())
   .pipe($.eslint.format())
-  // .pipe($.eslint.failAfterError())
-  // .pipe($.if(!browserSync.active, $.eslint.failOnError()));
 );
 
-// consoleReporter(),
 gulp.task('lint:styles', () =>
   gulp.src([
     './styles/**/*.css',
     '!./styles/**/*.min.css'
   ])
-  // .pipe($.stylelint({
   .pipe(gulpStylelint({
     failAfterError: false,
     reporters: [{
@@ -67,25 +57,9 @@ gulp.task('scripts', (cb) => {
       module: {
         rules: [{
           test: /\.js$/,
-          exclude: /(node_modules|bower_components)/,
+          exclude: /node_modules/,
           use: {
-            loader: 'babel-loader',
-            options: {
-              presets: [
-                ['env', {
-                  'targets': {
-                    'browsers': [
-                      '> 1%',
-                      'last 2 versions',
-                      'safari >= 7',
-                      'Firefox ESR'
-                    ]
-                  },
-                  'modules': false,
-                  'loose': true
-                }]
-              ]
-            }
+            loader: 'babel-loader'
           }
         }]
       },
@@ -97,8 +71,7 @@ gulp.task('scripts', (cb) => {
           output: {
             comments: false
           }
-        }),
-        new webpack.optimize.ModuleConcatenationPlugin()
+        })
       ]
     },
     (err, stats) => {
@@ -106,8 +79,6 @@ gulp.task('scripts', (cb) => {
         throw new $.util.PluginError('webpack', err);
       }
       $.util.log('[webpack]', stats.toString({
-        // output options
-        // https://github.com/webpack/docs/wiki/node.js-api
         chunks: false,
         colors: true
       }));
@@ -120,30 +91,17 @@ gulp.task('scripts', (cb) => {
 gulp.task('styles', () =>
   gulp.src([
     './styles/main.css'
-    // ], { read: false }
   ])
-  // ], {
-  //   since: gulp.lastRun('styles'),
-  // })
   .pipe($.plumber())
-  // .pipe($.newer('./styles'))
   .pipe($.sourcemaps.init())
   .pipe($.postcss([
-    postcssImport({
-      // path: ['./styles/**/*'],
-      // from: './styles/main.css',
-    }),
-    // postcssUrl({
-    //   url: 'inline',
-    // }),
     postcssCssnext({
-      browsers: '> 1%, last 2 versions, safari >= 7, Firefox ESR',
+      browsers: '> 1%',
       warnForDuplicates: false
     }),
     cssnano({
       safe: true
     }),
-    // postcssBrowserReporter(),
     postcssReporter()
   ]))
   .pipe($.rename({
@@ -178,14 +136,12 @@ gulp.task('html', () =>
   ], {
     since: gulp.lastRun('html')
   })
-  // .pipe($.newer('dist/'))
   .pipe($.htmlmin({
     collapseWhitespace: true,
     removeComments: true
   }))
   .pipe($.minifyInline())
   .pipe($.rename({
-    // suffix: '.min',
     basename: 'index'
   }))
   .pipe(gulp.dest('./'))
@@ -204,25 +160,18 @@ const watch = () => {
       './**/*.html',
       './images/**/*',
       './styles/main.css',
-      './styles/module-variables.css',
-      './scripts/main.js',
-      './scripts/module-bg.js',
-      './scripts/module-effects.js'
+      './scripts/main.js'
     ],
     port: 8080,
     browser: 'google chrome'
   });
 
   gulp.watch(['./**/*.html'], gulp.series('html'));
-  // gulp.watch(['./images/**/*'], gulp.series('images'));
   gulp.watch([
-    './styles/main.css',
-    './styles/module-variables.css'
+    './styles/main.css'
   ], gulp.series('lint:styles', 'styles'));
   gulp.watch([
-    './scripts/main.js',
-    './scripts/module-bg.js',
-    './scripts/module-effects.js'
+    './scripts/main.js'
   ], gulp.series('lint:scripts', 'scripts'));
 };
 

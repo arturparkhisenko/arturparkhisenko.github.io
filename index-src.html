@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Artur Parkhisenko - Engineer</title>
   <meta name="description" content="www. www always changes">
-  <meta name="keywords" content="Artur Parkhisenko, Engineer, Developer, Geek, JavaScript, Web Components, DevTools, HTML, JS, CSS, ikeagold, gamer">
+  <meta name="keywords" content="Artur Parkhisenko, Engineer, Developer, Geek, JavaScript, WebAssembly, Web Components, DevTools, HTML, JS, CSS, ikeagold, gamer">
   <meta name="author" content="Artur Parkhisenko">
   <meta name="application-name" content="Artur Parkhisenko">
   <meta name="HandheldFriendly" content="True">
@@ -14,7 +14,7 @@
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: blob: 'unsafe-inline' 'unsafe-eval' wss://localhost:* https://arturparkhisenko.github.io https://source.unsplash.com https://images.unsplash.com https://unsplash.it https://www.google-analytics.com; connect-src 'self' wss://localhost:*; script-src 'self' 'unsafe-inline' data: https://www.google-analytics.com; style-src 'self'; child-src 'self'; manifest-src 'self'; media-src 'self' blob:; img-src 'self' data: https://source.unsplash.com https://images.unsplash.com https://unsplash.it https://www.google-analytics.com;">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: blob: 'unsafe-inline' 'unsafe-eval' ws://localhost:* https://arturparkhisenko.github.io https://source.unsplash.com https://images.unsplash.com https://www.google-analytics.com; connect-src 'self' ws://localhost:*; script-src 'self' 'unsafe-inline' data: https://www.google-analytics.com; style-src 'self' 'unsafe-inline'; child-src 'self'; worker-src 'self'; manifest-src 'self'; media-src 'self' blob:; img-src 'self' data: https://source.unsplash.com https://images.unsplash.com https://www.google-analytics.com;">
 
   <meta name="google-site-verification" content="RZMrzKt4gfp4dy-KC8JW6KFzKkN4h5iwPGMEWbGtoDo">
   <link rel="canonical" href="https://arturparkhisenko.github.io/">
@@ -24,26 +24,55 @@
   <meta property="og:description" content="#engineer and #geek">
   <meta property="og:image" content="https://arturparkhisenko.github.io/android-chrome-192x192.png">
   <meta property="og:url" content="https://arturparkhisenko.github.io/">
-
   <meta name="twitter:title" content="Artur Parkhisenko - Personal Site">
   <meta name="twitter:description" content="#engineer and #geek">
   <meta name="twitter:image" content="https://arturparkhisenko.github.io/android-chrome-192x192.png">
   <meta name="twitter:card" content="summary_large_image">
-
   <link href="https://plus.google.com/115456555991025584178" rel="author">
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="manifest" href="/manifest.json">
-  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#16161d">
   <meta name="theme-color" content="#16161d">
+  <link rel="icon" sizes="16x16 32x32 48x48" href="favicon.ico">
+  <link rel="icon" sizes="512x512" href="favicon-512x512.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#16161d">
 
-  <!--[if lt IE 9]><meta http-equiv="X-UA-Compatible" content="IE=edge"><script src='//cdn.jsdelivr.net/g/html5shiv'></script><![endif]-->
+  <!--[if lt IE 9]><meta http-equiv="X-UA-Compatible" content="IE=edge"><script src='https://cdn.jsdelivr.net/g/html5shiv'></script><![endif]-->
 
   <link rel="dns-prefetch" href="https://pages.github.com/">
   <link rel="preconnect" href="https://source.unsplash.com/">
   <link rel="preconnect" href="https://images.unsplash.com/">
+
+  <style>
+    body,
+    html {
+      height: 100%
+    }
+
+    body {
+      z-index: 0;
+      display: -webkit-box;
+      display: flex;
+      overflow: hidden;
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      background: #222 url(images/dino_js.svg) no-repeat fixed 50%/contain content-box;
+      color: #fafafa;
+      font-size: 1em;
+      font-family: "Helvetica, Arial, sans-serif";
+      font-family: BlinkMacSystemFont, -apple-system, ".SFNSDisplay-Regular", ".SFNSText-Regular", "SF UI Text", "San Francisco", "Noto Sans", "Helvetica Neue", Roboto, "Droid Sans", Oxygen, "Lucida Grande", "Segoe UI", "Fira Sans", Ubuntu, Cantarell, Helvetica, Arial, sans-serif;
+      direction: ltr;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      -webkit-box-flex: 1;
+      flex: 1 0 auto;
+      -webkit-box-pack: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      align-items: center;
+      line-height: 1.15
+    }
+  </style>
 
   <noscript>
     <link rel="stylesheet" href="styles/main.min.css">
@@ -55,47 +84,43 @@
 <body itemscope itemtype="https://schema.org/Person">
 
   <div class="screen">
-    <header role="banner">
-      <!-- <img itemprop="image" src="" alt="" /> -->
+    <header>
       <h1 itemprop="name">Artur Parkhisenko</h1>
       <em>www. www always changes</em>
     </header>
     <br/>
-    <main role="main">
+    <main>
       <strong>&lt;/&gt;</strong>
-      <span itemprop="jobTitle">#engineer</span> &amp;&amp; #geek
+      <span itemprop="jobTitle">Engineer</span> 📹, Geek 🎩, Speaker 📢, Open-Source ⚡️
     </main>
     <br/>
-    <footer role="contentinfo">
+    <footer>
       <address>
         <!-- <a itemprop="skype" href="skype:arthur.parkhisenko?chat">Skype</a>, -->
-        <a itemprop="url" rel="noopener" href="https://github.com/arturparkhisenko">GitHub</a>,
-        <a itemprop="url" rel="noopener" href="https://www.linkedin.com/in/artur-parkhisenko" target="_blank">LinkedIn</a>,
-        <a itemprop="url" rel="noopener" href="https://twitter.com/lifeasecond" target="_blank">Twitter</a>,
+        <a itemprop="url" rel="noopener noreferrer" href="https://github.com/arturparkhisenko">GitHub</a> <a itemprop="url" rel="noopener noreferrer" href="https://gist.github.com/arturparkhisenko">(Gists)</a>,
+        <a itemprop="url" rel="noopener noreferrer" href="https://www.linkedin.com/in/artur-parkhisenko" target="_blank">LinkedIn</a>,
+        <a itemprop="url" rel="noopener noreferrer" href="https://twitter.com/lifeasecond" target="_blank">Twitter</a>,
         <br/>
 		    <!-- <a itemprop="url" rel="publisher" href="https://plus.google.com/115456555991025584178?rel=author" target="_blank" hidden>Google+</a> -->
-        <!-- <a itemprop="url" rel="noopener" href="https://medium.com/@ikeagold" target="_blank">Medium</a>, -->
-        <a itemprop="url" rel="noopener" href="https://gist.github.com/arturparkhisenko">GitHub Gists</a>,
-        <a itemprop="url" rel="noopener" href="https://codepen.io/arturparkhisenko/" target="_blank">CodePen</a>,
-        <a itemprop="url" rel="noopener" href="https://speakerdeck.com/arturparkhisenko" target="_blank">Speaker Deck</a>,
-        <a itemprop="url" rel="noopener" href="https://www.goodreads.com/user/show/63098005-artur-parkhisenko" target="_blank">Goodreads</a>
-        <!-- <a itemprop="url" rel="noopener" href="https://toster.ru/user/ikeagold" target="_blank">Toster</a>, -->
-        <!-- <a itemprop="url" rel="noopener" href="https://habrahabr.ru/users/ikeagold" target="_blank">Habr</a>, -->
-        <!-- <a itemprop="url" rel="noopener" href="https://www.codeschool.com/users/1010458" target="_blank">CodesSchool</a>, -->
-        <!-- <a itemprop="url" rel="noopener" href="https://www.khanacademy.org/profile/arturparkhisenko/" target="_blank">KhanAcademy</a>, -->
-        <!-- <a itemprop="url" rel="noopener" href="https://www.codewars.com/users/ikeagold" target="_blank">Codewars</a>, -->
-        <!-- <a itemprop="url" rel="noopener" href="https://www.codingame.com/profile/01abf9325ae7ca08193089b8fb500c4c7782821" target="_blank">CodinGame</a>, -->
-        <!-- <a itemprop="url" rel="noopener" href="https://coderwall.com/ikeagold" target="_blank">CoderWall</a>, -->
-        <!-- <a itemprop="url" rel="noopener" href="https://mva.microsoft.com/Profile.aspx?alias=2930238" target="_blank">
+        <!-- <a itemprop="url" rel="noopener noreferrer" href="https://medium.com/@ikeagold" target="_blank">Medium</a>, -->
+        <a itemprop="url" rel="noopener noreferrer" href="https://codepen.io/arturparkhisenko/" target="_blank">CodePen</a>,
+        <a itemprop="url" rel="noopener noreferrer" href="https://speakerdeck.com/arturparkhisenko" target="_blank">Speaker Deck</a>,
+        <a itemprop="url" rel="noopener noreferrer" href="https://www.goodreads.com/user/show/63098005-artur-parkhisenko" target="_blank">Goodreads</a>
+        <!-- <a itemprop="url" rel="noopener noreferrer" href="https://vimeo.com/arturparkhisenko" target="_blank">Vimeo</a> -->
+        <!-- <a itemprop="url" rel="noopener noreferrer" href="https://toster.ru/user/ikeagold" target="_blank">Toster</a>, -->
+        <!-- <a itemprop="url" rel="noopener noreferrer" href="https://habrahabr.ru/users/ikeagold" target="_blank">Habr</a>, -->
+        <!-- <a itemprop="url" rel="noopener noreferrer" href="https://www.codeschool.com/users/1010458" target="_blank">CodesSchool</a>, -->
+        <!-- <a itemprop="url" rel="noopener noreferrer" href="https://www.khanacademy.org/profile/arturparkhisenko/" target="_blank">KhanAcademy</a>, -->
+        <!-- <a itemprop="url" rel="noopener noreferrer" href="https://www.codewars.com/users/ikeagold" target="_blank">Codewars</a>, -->
+        <!-- <a itemprop="url" rel="noopener noreferrer" href="https://www.codingame.com/profile/01abf9325ae7ca08193089b8fb500c4c7782821" target="_blank">CodinGame</a>, -->
+        <!-- <a itemprop="url" rel="noopener noreferrer" href="https://coderwall.com/ikeagold" target="_blank">CoderWall</a>, -->
+        <!-- <a itemprop="url" rel="noopener noreferrer" href="https://mva.microsoft.com/Profile.aspx?alias=2930238" target="_blank">
           <abbr title="Microsoft Virtual Academy">MVA</abbr>
         </a> -->
       </address>
-      <!-- <br/> -->
       <small>
-        <a class="license" href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener" title="CC0">the cake is a lie</a>
-        <div class="jack">
-          <a href="https://www.thevenusproject.com/" target="_blank" rel="noopener" title="Life Is Strange">hole to another universe → <span class="hole"></span></a>
-        </div>
+        <a class="license" href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener noreferrer" title="CC0">the cake is a lie</a>
+        <a href="https://www.thevenusproject.com/" target="_blank" rel="noopener noreferrer" title="Life Is Strange" class="jack">hole to another universe → <span class="hole"></span></a>
       </small>
     </footer>
   </div>
@@ -110,11 +135,11 @@
         (i[r].q = i[r].q || []).push(arguments);
       }, i[r].l = 1 * new Date();
       a = s.createElement(o),
-      m = s.getElementsByTagName(o)[0];
+        m = s.getElementsByTagName(o)[0];
       a.async = 1;
       a.src = g;
       m.parentNode.insertBefore(a, m);
-    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
     window.ga('create', 'UA-36592065-4', 'auto');
     window.ga('send', 'pageview');
   </script>

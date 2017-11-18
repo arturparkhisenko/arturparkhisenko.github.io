@@ -7,11 +7,13 @@
   },
   "parserOptions": {
     "ecmaVersion": 8,
-    "sourceType": "module"
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "experimentalObjectRestSpread": true
+    }
   },
   "plugins": [
-    "html",
-    "import"
+    "html"
   ],
   "rules": {
     "no-console": 0,

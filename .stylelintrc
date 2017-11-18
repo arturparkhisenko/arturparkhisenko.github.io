@@ -1,9 +1,16 @@
 {
   "extends": "stylelint-config-standard",
+  "processors": ["stylelint-processor-html"],
   "rules": {
-    "at-rule-empty-line-before": "always",
-    "comment-empty-line-before": "always",
-    "comment-whitespace-inside": "always",
+    "comment-empty-line-before": [
+      "always",
+      {
+        "except": [
+          "first-nested"
+        ]
+      }
+    ],
+    "comment-whitespace-inside": "never",
     "indentation": 2
   }
 }
