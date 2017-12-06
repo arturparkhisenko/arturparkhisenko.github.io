@@ -17,5 +17,6 @@
 - [validator.w3.org/nu](https://validator.w3.org/nu/?showoutline=yes&doc=https%3A%2F%2Farturparkhisenko.github.io%2F)
 - [sonarwhal](https://sonarwhal.com/scanner/)
 - [lighthouse](https://developers.google.com/web/tools/lighthouse/)
+- [observatory.mozilla.org](https://observatory.mozilla.org/)
 
 ## [MIT License](LICENSE.md)
