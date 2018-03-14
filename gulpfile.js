@@ -7,147 +7,175 @@ const gulpLoadPlugins = require('gulp-load-plugins');
 const browserSync = require('browser-sync');
 const gulpStylelint = require('gulp-stylelint');
 const cssnano = require('cssnano');
+const postcssPresetEnv = require('postcss-preset-env');
 const postcssCssnext = require('postcss-cssnext');
 const postcssReporter = require('postcss-reporter');
 const $ = gulpLoadPlugins();
+const production = process.env.NODE_ENV === 'production';
 
-gulp.task('clean', () => del(['dist'], {
-  dot: true
-}));
+console.log(`process.env.NODE_ENV = ${process.env.NODE_ENV}`); // eslint-disable-line
+
+gulp.task('clean', () =>
+  del(['dist'], {
+    dot: true
+  })
+);
 
 gulp.task('lint:scripts', () =>
-  gulp.src([
-    './scripts/**/*.js',
-    'gulpfile.js',
-    '!./scripts/**/*.min.js*',
-    '!node_modules/**'
-  ])
-  .pipe($.eslint())
-  .pipe($.eslint.format())
+  gulp
+    .src([
+      './scripts/**/*.js',
+      'gulpfile.js',
+      '!./scripts/**/*.min.js*',
+      '!node_modules/**'
+    ])
+    .pipe($.eslint())
+    .pipe($.eslint.format())
 );
 
 gulp.task('lint:styles', () =>
-  gulp.src([
-    './styles/**/*.css',
-    '!./styles/**/*.min.css'
-  ])
-  .pipe(gulpStylelint({
-    failAfterError: false,
-    reporters: [{
-      formatter: 'verbose',
-      console: true
-    }],
-    debug: true
-  }))
+  gulp.src(['./styles/**/*.css', '!./styles/**/*.min.css']).pipe(
+    gulpStylelint({
+      failAfterError: false,
+      reporters: [
+        {
+          formatter: 'verbose',
+          console: true
+        }
+      ],
+      debug: true
+    })
+  )
 );
 
 gulp.task('scripts', (cb) => {
-  webpack({
+  webpack(
+    {
       entry: {
-        main: [
-          './scripts/main.js'
-        ]
+        main: ['./scripts/main.js']
       },
+      target: 'web',
+      performance: {
+        hints: 'warning' // false, 'error'
+      },
+      mode: production ? 'production' : 'development',
       devtool: 'source-map', // cheap-module-source-map
-      watch: false,
       output: {
         path: path.resolve(__dirname, './scripts'),
         filename: '[name].min.js'
       },
       module: {
-        rules: [{
-          test: /\.js$/,
-          exclude: /node_modules/,
-          use: {
-            loader: 'babel-loader'
+        rules: [
+          {
+            test: /\.js$/,
+            exclude: /node_modules/,
+            use: {
+              loader: 'babel-loader?cacheDirectory=true'
+            }
           }
-        }]
+        ]
       },
-      plugins: [
-        new webpack.optimize.UglifyJsPlugin({
-          compress: {
-            warnings: false
-          },
-          output: {
-            comments: false
-          }
-        })
-      ]
+      optimization: {
+        splitChunks: {
+          chunks: 'all',
+          name: 'vendor'
+        },
+        minimize: true
+      }
     },
     (err, stats) => {
       if (err) {
         throw new $.util.PluginError('webpack', err);
       }
-      $.util.log('[webpack]', stats.toString({
-        chunks: false,
-        colors: true
-      }));
+      $.util.log(
+        '[webpack]',
+        stats.toString({
+          chunks: false,
+          colors: true
+        })
+      );
       $.util.log('[webpack]', 'Packed successfully!');
-    });
+    }
+  );
 
   cb();
 });
 
 gulp.task('styles', () =>
-  gulp.src([
-    './styles/main.css'
-  ])
-  .pipe($.plumber())
-  .pipe($.sourcemaps.init())
-  .pipe($.postcss([
-    postcssCssnext({
-      browsers: '> 1%',
-      warnForDuplicates: false
-    }),
-    cssnano({
-      safe: true
-    }),
-    postcssReporter()
-  ]))
-  .pipe($.rename({
-    suffix: '.min'
-  }))
-  .pipe($.sourcemaps.write('./'))
-  .pipe(gulp.dest('./styles/'))
-  .pipe($.size({
-    title: 'styles'
-  }))
+  gulp
+    .src(['./styles/main.css'])
+    .pipe($.plumber())
+    .pipe($.sourcemaps.init())
+    .pipe(
+      $.postcss([
+        postcssPresetEnv({
+          stage: 0 // default is 3
+        }),
+        postcssCssnext({
+          warnForDuplicates: false
+        }),
+        cssnano({
+          safe: true
+        }),
+        postcssReporter()
+      ])
+    )
+    .pipe(
+      $.rename({
+        suffix: '.min'
+      })
+    )
+    .pipe($.sourcemaps.write('./'))
+    .pipe(gulp.dest('./styles/'))
+    .pipe(
+      $.size({
+        title: 'styles'
+      })
+    )
 );
 
 gulp.task('images', () =>
-  gulp.src([
-    './images/**/*'
-  ], {
-    since: gulp.lastRun('images')
-  })
-  .pipe($.imagemin({
-    progressive: true,
-    interlaced: true
-  }))
-  .pipe(gulp.dest('./images/'))
-  .pipe($.size({
-    title: 'images'
-  }))
+  gulp
+    .src(['./images/**/*'], {
+      since: gulp.lastRun('images')
+    })
+    .pipe(
+      $.imagemin({
+        progressive: true,
+        interlaced: true
+      })
+    )
+    .pipe(gulp.dest('./images/'))
+    .pipe(
+      $.size({
+        title: 'images'
+      })
+    )
 );
 
 gulp.task('html', () =>
-  gulp.src([
-    './index-src.html'
-  ], {
-    since: gulp.lastRun('html')
-  })
-  .pipe($.htmlmin({
-    collapseWhitespace: true,
-    removeComments: true
-  }))
-  .pipe($.minifyInline())
-  .pipe($.rename({
-    basename: 'index'
-  }))
-  .pipe(gulp.dest('./'))
-  .pipe($.size({
-    title: 'html'
-  }))
+  gulp
+    .src(['./index-src.html'], {
+      since: gulp.lastRun('html')
+    })
+    .pipe(
+      $.htmlmin({
+        collapseWhitespace: true,
+        removeComments: true
+      })
+    )
+    .pipe($.minifyInline())
+    .pipe(
+      $.rename({
+        basename: 'index'
+      })
+    )
+    .pipe(gulp.dest('./'))
+    .pipe(
+      $.size({
+        title: 'html'
+      })
+    )
 );
 
 const watch = () => {
@@ -167,16 +195,14 @@ const watch = () => {
   });
 
   gulp.watch(['./**/*.html'], gulp.series('html'));
-  gulp.watch([
-    './styles/main.css'
-  ], gulp.series('lint:styles', 'styles'));
-  gulp.watch([
-    './scripts/main.js'
-  ], gulp.series('lint:scripts', 'scripts'));
+  gulp.watch(['./styles/main.css'], gulp.series('lint:styles', 'styles'));
+  gulp.watch(['./scripts/main.js'], gulp.series('lint:scripts', 'scripts'));
 };
 
-gulp.task('serve',
-  gulp.series('clean',
+gulp.task(
+  'serve',
+  gulp.series(
+    'clean',
     gulp.parallel(
       gulp.series('lint:scripts', 'scripts'),
       gulp.series('lint:styles', 'styles'),
@@ -188,11 +214,15 @@ gulp.task('serve',
 );
 
 // Build production files, the default task
-gulp.task('default', gulp.series('clean',
-  gulp.parallel(
-    gulp.series('lint:scripts', 'scripts'),
-    gulp.series('lint:styles', 'styles'),
-    'images',
-    'html'
+gulp.task(
+  'default',
+  gulp.series(
+    'clean',
+    gulp.parallel(
+      gulp.series('lint:scripts', 'scripts'),
+      gulp.series('lint:styles', 'styles'),
+      'images',
+      'html'
+    )
   )
-));
+);

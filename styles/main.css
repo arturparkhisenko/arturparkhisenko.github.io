@@ -88,6 +88,10 @@ footer {
   flex-direction: column;
 }
 
+small {
+  display: flex;
+}
+
 footer small {
   justify-content: space-between;
 }
@@ -112,17 +116,13 @@ a:hover {
   color: #f7df31;
 }
 
-address > a,
-address > a:visited {
-  display: inline-block;
-}
-
 address {
   margin-bottom: 0.5em;
 }
 
-small {
-  display: flex;
+address > a,
+address > a:visited {
+  display: inline-block;
 }
 
 ::selection {
