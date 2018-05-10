@@ -1,6 +1,6 @@
 {
   "extends": "stylelint-config-standard",
-  "processors": ["stylelint-processor-html"],
+  "processors": ["@mapbox/stylelint-processor-arbitrary-tags"],
   "rules": {
     "comment-empty-line-before": [
       "always",
