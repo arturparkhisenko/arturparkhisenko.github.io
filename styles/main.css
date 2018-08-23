@@ -7,37 +7,6 @@
   --colorLinkHover: green;
 }
 
-/*[hidden] {
-  display: none;
-}*/
-
-/*inlined*/
-
-/*body,
-html {
-  height: 100%;
-}
-
-body {
-  z-index: 0;
-  display: flex;
-  overflow: hidden;
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  background: #222 url("../images/dino_js.svg") no-repeat fixed center / contain content-box;
-  color: var(--fontColor, #fafafa);
-  font-size: var(--fontSize, 1em);
-  font-family: var(--fontStack, "Helvetica, Arial, sans-serif");
-  direction: ltr;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-  flex: 1 0 auto;
-  justify-content: center;
-  align-items: center;
-  line-height: 1.15;
-}*/
-
 .background {
   position: absolute;
   top: 0;

@@ -1,4 +1,5 @@
 // LICENSE.md
+
 const path = require('path');
 const gulp = require('gulp');
 const webpack = require('webpack');
@@ -21,7 +22,7 @@ gulp.task('clean', () =>
   })
 );
 
-gulp.task('lint:scripts', () =>
+gulp.task('lintScripts', () =>
   gulp
     .src([
       './scripts/**/*.js',
@@ -33,7 +34,7 @@ gulp.task('lint:scripts', () =>
     .pipe($.eslint.format())
 );
 
-gulp.task('lint:styles', () =>
+gulp.task('lintStyles', () =>
   gulp.src(['./styles/**/*.css', '!./styles/**/*.min.css']).pipe(
     gulpStylelint({
       failAfterError: false,
@@ -195,8 +196,8 @@ const watch = () => {
   });
 
   gulp.watch(['./**/*.html'], gulp.series('html'));
-  gulp.watch(['./styles/main.css'], gulp.series('lint:styles', 'styles'));
-  gulp.watch(['./scripts/main.js'], gulp.series('lint:scripts', 'scripts'));
+  gulp.watch(['./styles/main.css'], gulp.series('lintStyles', 'styles'));
+  gulp.watch(['./scripts/main.js'], gulp.series('lintScripts', 'scripts'));
 };
 
 gulp.task(
@@ -204,8 +205,8 @@ gulp.task(
   gulp.series(
     'clean',
     gulp.parallel(
-      gulp.series('lint:scripts', 'scripts'),
-      gulp.series('lint:styles', 'styles'),
+      gulp.series('lintScripts', 'scripts'),
+      gulp.series('lintStyles', 'styles'),
       // 'images',
       'html'
     ),
@@ -219,8 +220,8 @@ gulp.task(
   gulp.series(
     'clean',
     gulp.parallel(
-      gulp.series('lint:scripts', 'scripts'),
-      gulp.series('lint:styles', 'styles'),
+      gulp.series('lintScripts', 'scripts'),
+      gulp.series('lintStyles', 'styles'),
       'images',
       'html'
     )

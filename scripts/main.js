@@ -1,4 +1,4 @@
-console.info('%c ;) Hi there! ', 'background: #333; color: #DCCD69');
+console.info('%c ;) Hi!', 'background: #333; color: #DCCD69');
 
 const elBody = document.querySelector('body');
 
@@ -26,9 +26,6 @@ if (raf) {
  * @type {class}
  */
 class BackgroundGenerator {
-  /**
-   * constructor
-   */
   constructor() {
     this.cw = window.innerWidth ||
     document.documentElement.clientWidth ||
@@ -48,27 +45,21 @@ class BackgroundGenerator {
     }
   }
 
-  /**
-   * init
-   */
   init() {
     window.addEventListener('online', this.setBg);
     // window.addEventListener('offline', this.setBg);
     this.setBg();
   }
 
-  /**
-   * installBg
-   */
   installBg() {
     const newCw = this.cw + Math.round(Math.random() * 10);
     const newCh = this.ch + Math.round(Math.random() * 10);
-
+    const elPreScreen = document.querySelector('.screen');
     const elPre = document.querySelector('.background');
+
     if (elPre) {
       elPre.style.opacity = '1';
     }
-    const elPreScreen = document.querySelector('.screen');
 
     this.elBgImg = document.createElement('img');
     this.elBgImg.classList.add('background');
@@ -85,9 +76,6 @@ class BackgroundGenerator {
     this.elBgImg.src = `https://source.unsplash.com/${newCw}x${newCh}`;
   }
 
-  /**
-   * setBg
-   */
   setBg() {
     if (navigator.onLine) {
       console.info('setBg');
