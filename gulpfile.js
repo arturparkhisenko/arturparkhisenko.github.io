@@ -11,6 +11,7 @@ const cssnano = require('cssnano');
 const postcssPresetEnv = require('postcss-preset-env');
 const postcssCssnext = require('postcss-cssnext');
 const postcssReporter = require('postcss-reporter');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const $ = gulpLoadPlugins();
 const production = process.env.NODE_ENV === 'production';
 
@@ -52,15 +53,14 @@ gulp.task('lintStyles', () =>
 gulp.task('scripts', (cb) => {
   webpack(
     {
-      entry: {
-        main: ['./scripts/main.js']
-      },
+      entry: './scripts/main.js',
       target: 'web',
       performance: {
         hints: 'warning' // false, 'error'
       },
       mode: production ? 'production' : 'development',
       devtool: 'source-map', // cheap-module-source-map
+      watch: false,
       output: {
         path: path.resolve(__dirname, './scripts'),
         filename: '[name].min.js'
@@ -77,11 +77,16 @@ gulp.task('scripts', (cb) => {
         ]
       },
       optimization: {
-        splitChunks: {
-          chunks: 'all',
-          name: 'vendor'
-        },
-        minimize: true
+        minimize: true,
+        minimizer: [
+          new UglifyJsPlugin({
+            uglifyOptions: {
+              output: {
+                comments: false
+              }
+            }
+          })
+        ]
       }
     },
     (err, stats) => {

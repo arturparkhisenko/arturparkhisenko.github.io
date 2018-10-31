@@ -1,5 +1,5 @@
 {
-  "extends": ["eslint:recommended", "google"],
+  "extends": ["eslint:recommended"],
   "parser": "babel-eslint",
   "env": {
     "browser": true,

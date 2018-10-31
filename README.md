@@ -1,4 +1,10 @@
-# :space_invader: Artur Parkhisenko, personal website
+# Artur Parkhisenko :space_invader:, personal website
+
+[![GitHub license](https://img.shields.io/github/license/arturparkhisenko/arturparkhisenko.github.io.svg)](https://github.com/arturparkhisenko/arturparkhisenko.github.io/blob/master/LICENSE.md) [![dependencies Status](https://david-dm.org/arturparkhisenko/arturparkhisenko.github.io/dev-status.svg)](https://david-dm.org/arturparkhisenko/arturparkhisenko.github.io?type=dev)
+
+> No Third-Party Tracking, No Advertising Services, No Cookies
+
+## commands
 
 - `npm start`
 - `npm run build`
@@ -18,5 +24,9 @@
 - [sonarwhal](https://sonarwhal.com/scanner/)
 - [lighthouse](https://developers.google.com/web/tools/lighthouse/)
 - [observatory.mozilla.org](https://observatory.mozilla.org/)
+
+## to-do
+
+- [Low-tech](https://solar.lowtechmagazine.com/2018/09/how-to-build-a-lowtech-website/)
 
 ## [MIT License](LICENSE.md)
