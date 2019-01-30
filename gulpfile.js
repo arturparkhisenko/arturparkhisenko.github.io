@@ -1,18 +1,21 @@
 // LICENSE.md
 
 const path = require('path');
-const gulp = require('gulp');
-const webpack = require('webpack');
-const del = require('del');
-const gulpLoadPlugins = require('gulp-load-plugins');
+
 const browserSync = require('browser-sync');
-const gulpStylelint = require('gulp-stylelint');
 const cssnano = require('cssnano');
-const postcssPresetEnv = require('postcss-preset-env');
+const del = require('del');
 const postcssCssnext = require('postcss-cssnext');
+const postcssPresetEnv = require('postcss-preset-env');
 const postcssReporter = require('postcss-reporter');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
+const webpack = require('webpack');
+
+const gulp = require('gulp');
+const gulpLoadPlugins = require('gulp-load-plugins');
 const $ = gulpLoadPlugins();
+const gulpStylelint = require('gulp-stylelint');
+
 const production = process.env.NODE_ENV === 'production';
 
 console.log(`process.env.NODE_ENV = ${process.env.NODE_ENV}`); // eslint-disable-line
@@ -79,8 +82,9 @@ gulp.task('scripts', (cb) => {
       optimization: {
         minimize: true,
         minimizer: [
-          new UglifyJsPlugin({
-            uglifyOptions: {
+          new TerserPlugin({
+            sourceMap: true,
+            terserOptions: {
               output: {
                 comments: false
               }
