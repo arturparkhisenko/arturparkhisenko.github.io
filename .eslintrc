@@ -8,10 +8,7 @@
   },
   "parserOptions": {
     "ecmaVersion": 2018,
-    "sourceType": "module",
-    "ecmaFeatures": {
-      "experimentalObjectRestSpread": true
-    }
+    "sourceType": "module"
   },
   "plugins": ["html"],
   "rules": {
