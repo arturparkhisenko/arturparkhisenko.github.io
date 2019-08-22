@@ -3,28 +3,6 @@
 
   const elBody = document.querySelector('body');
 
-  // async-css-----------------------------
-
-  const cb = () => {
-    const h = document.getElementsByTagName('head')[0];
-    const l = document.createElement('link');
-    l.rel = 'stylesheet';
-    l.href = '../styles/main.min.css';
-    h.parentNode.insertBefore(l, h);
-  };
-
-  const raf =
-    requestAnimationFrame ||
-    window.mozRequestAnimationFrame ||
-    window.webkitRequestAnimationFrame ||
-    window.msRequestAnimationFrame;
-
-  if (raf !== undefined) {
-    raf(cb);
-  } else {
-    window.addEventListener('load', cb);
-  }
-
   // remove polyfill mdn ------------------
   if (!('remove' in Element.prototype)) {
     Element.prototype.remove = function remove() {
@@ -139,10 +117,10 @@
         if (registration.active) {
           isUpdate = true;
         }
-        registration.onupdatefound = eventUpdate => {
+        registration.onupdatefound = () => {
           console.log('New site update avaliable ;)');
           // not `=>` because it doesn't create scope
-          registration.installing.onstatechange = function(eventStateChange) {
+          registration.installing.onstatechange = function() {
             if (this.state === 'installed') {
               console.log('serviceWorker installed!');
               if (isUpdate) {

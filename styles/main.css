@@ -168,6 +168,10 @@ address > a:visited {
     page-break-inside: avoid;
   }
 
+  .background {
+    display: none;
+  }
+
   .screen {
     background-color: #fff;
     color: #222;
