@@ -6,3 +6,11 @@ node_modules
 ###########
 scripts
 *.js
+
+# Other #
+#########
+*.md
+*.json
+*.webmanifest
+*.xml
+*.txt

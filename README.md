@@ -1,4 +1,4 @@
-# Artur Parkhisenko :space_invader:, personal website
+# Artur Parkhisenko :video_camera: :video_game:, personal website
 
 [![GitHub license](https://img.shields.io/github/license/arturparkhisenko/arturparkhisenko.github.io.svg)](https://github.com/arturparkhisenko/arturparkhisenko.github.io/blob/master/LICENSE.md) [![dependencies Status](https://david-dm.org/arturparkhisenko/arturparkhisenko.github.io/dev-status.svg)](https://david-dm.org/arturparkhisenko/arturparkhisenko.github.io?type=dev)
 
