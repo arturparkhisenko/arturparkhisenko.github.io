@@ -3,14 +3,10 @@
   "parser": "babel-eslint",
   "env": {
     "browser": true,
-    "es6": true,
-    "node": true
+    "es2020": true,
+    "node": true,
+    "serviceworker": true
   },
-  "parserOptions": {
-    "ecmaVersion": 2018,
-    "sourceType": "module"
-  },
-  "plugins": ["html"],
   "rules": {
     "comma-dangle": ["error", "never"],
     "no-console": 0,

@@ -5,7 +5,8 @@ const path = require('path');
 const browserSync = require('browser-sync');
 const cssnano = require('cssnano');
 const del = require('del');
-const postcssCssnext = require('postcss-cssnext');
+const fancyLog = require('fancy-log');
+const PluginError = require('plugin-error');
 const postcssPresetEnv = require('postcss-preset-env');
 const postcssReporter = require('postcss-reporter');
 const TerserPlugin = require('terser-webpack-plugin');
@@ -53,7 +54,7 @@ gulp.task('lintStyles', () =>
   )
 );
 
-gulp.task('scripts', (cb) => {
+gulp.task('scripts', cb => {
   webpack(
     {
       entry: './scripts/main.js',
@@ -83,28 +84,29 @@ gulp.task('scripts', (cb) => {
         minimize: true,
         minimizer: [
           new TerserPlugin({
-            sourceMap: true,
+            sourceMap: production === false,
             terserOptions: {
               output: {
                 comments: false
               }
-            }
+            },
+            extractComments: false
           })
         ]
       }
     },
     (err, stats) => {
       if (err) {
-        throw new $.util.PluginError('webpack', err);
+        throw new PluginError('webpack', err);
       }
-      $.util.log(
+      fancyLog(
         '[webpack]',
         stats.toString({
           chunks: false,
           colors: true
         })
       );
-      $.util.log('[webpack]', 'Packed successfully!');
+      fancyLog('[webpack]', 'Packed successfully!');
     }
   );
 
@@ -115,14 +117,11 @@ gulp.task('styles', () =>
   gulp
     .src(['./styles/main.css'])
     .pipe($.plumber())
-    .pipe($.sourcemaps.init())
+    .pipe($.if(production === false, $.sourcemaps.init()))
     .pipe(
       $.postcss([
         postcssPresetEnv({
           stage: 0 // default is 3
-        }),
-        postcssCssnext({
-          warnForDuplicates: false
         }),
         cssnano({
           safe: true
@@ -135,7 +134,7 @@ gulp.task('styles', () =>
         suffix: '.min'
       })
     )
-    .pipe($.sourcemaps.write('./'))
+    .pipe($.if(production === false, $.sourcemaps.write('./')))
     .pipe(gulp.dest('./styles/'))
     .pipe(
       $.size({
