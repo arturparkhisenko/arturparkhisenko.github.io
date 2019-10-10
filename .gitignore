@@ -58,3 +58,5 @@ $RECYCLE.BIN/
 # Other #
 #########
 additional-favicon
+scripts/*.map
+styles/*.map
