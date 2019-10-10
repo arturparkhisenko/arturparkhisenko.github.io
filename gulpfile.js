@@ -5,7 +5,8 @@ const path = require('path');
 const browserSync = require('browser-sync');
 const cssnano = require('cssnano');
 const del = require('del');
-const postcssCssnext = require('postcss-cssnext');
+const fancyLog = require('fancy-log');
+const PluginError = require('plugin-error');
 const postcssPresetEnv = require('postcss-preset-env');
 const postcssReporter = require('postcss-reporter');
 const TerserPlugin = require('terser-webpack-plugin');
@@ -88,23 +89,24 @@ gulp.task('scripts', (cb) => {
               output: {
                 comments: false
               }
-            }
+            },
+            extractComments: false
           })
         ]
       }
     },
     (err, stats) => {
       if (err) {
-        throw new $.util.PluginError('webpack', err);
+        throw new PluginError('webpack', err);
       }
-      $.util.log(
+      fancyLog(
         '[webpack]',
         stats.toString({
           chunks: false,
           colors: true
         })
       );
-      $.util.log('[webpack]', 'Packed successfully!');
+      fancyLog('[webpack]', 'Packed successfully!');
     }
   );
 
@@ -120,9 +122,6 @@ gulp.task('styles', () =>
       $.postcss([
         postcssPresetEnv({
           stage: 0 // default is 3
-        }),
-        postcssCssnext({
-          warnForDuplicates: false
         }),
         cssnano({
           safe: true

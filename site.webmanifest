@@ -1,6 +1,7 @@
 {
   "name": "Artur P.",
   "short_name": "Artur P.",
+  "start_url": ".",
   "icons": [
     {
       "src": "favicon-192x192.png",
