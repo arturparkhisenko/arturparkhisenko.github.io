@@ -144,6 +144,12 @@ address > a:visited {
   line-height: 1em; */
 }
 
+@media (prefers-color-scheme: dark) {
+  .background {
+    filter: brightness(.8);
+  }
+}
+
 @media print {
   body {
     background: transparent !important;

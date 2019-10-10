@@ -54,7 +54,7 @@ gulp.task('lintStyles', () =>
   )
 );
 
-gulp.task('scripts', (cb) => {
+gulp.task('scripts', cb => {
   webpack(
     {
       entry: './scripts/main.js',
@@ -84,7 +84,7 @@ gulp.task('scripts', (cb) => {
         minimize: true,
         minimizer: [
           new TerserPlugin({
-            sourceMap: true,
+            sourceMap: production === false,
             terserOptions: {
               output: {
                 comments: false
@@ -117,7 +117,7 @@ gulp.task('styles', () =>
   gulp
     .src(['./styles/main.css'])
     .pipe($.plumber())
-    .pipe($.sourcemaps.init())
+    .pipe($.if(production === false, $.sourcemaps.init()))
     .pipe(
       $.postcss([
         postcssPresetEnv({
@@ -134,7 +134,7 @@ gulp.task('styles', () =>
         suffix: '.min'
       })
     )
-    .pipe($.sourcemaps.write('./'))
+    .pipe($.if(production === false, $.sourcemaps.write('./')))
     .pipe(gulp.dest('./styles/'))
     .pipe(
       $.size({

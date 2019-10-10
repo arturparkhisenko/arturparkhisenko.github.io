@@ -2,6 +2,7 @@
   console.info('%c ;) Hi!', 'background: #333; color: #DCCD69');
 
   const elBody = document.querySelector('body');
+  const elScreen = document.querySelector('.screen');
 
   // remove polyfill mdn ------------------
   if (!('remove' in Element.prototype)) {
@@ -43,58 +44,62 @@
     screen.height;
   let elBgImg = null;
 
-  const initBg = () => {
+  const initBg = eventName => {
+    console.log(`Background update listener init by ${eventName} event`);
+
     window.addEventListener('online', setBg);
     // window.addEventListener('offline', setBg);
     setBg();
   };
 
   const setBg = () => {
-    console.info('setBg');
+    let elBackground = document.querySelector('.background');
+
+    console.info('[Background] loading...');
 
     if (navigator.onLine === false) {
-      console.warn("Sorry, you're offline");
+      console.warn("[Background] sorry, you're offline");
       return;
     }
 
-    const newCw = cw + Math.round(Math.random() * 10);
-    const newCh = ch + Math.round(Math.random() * 10);
-    const elPreScreen = document.querySelector('.screen');
-    const elPre = document.querySelector('.background');
-
-    if (elPre !== null) {
-      elPre.style.opacity = '1';
+    if (elBackground !== null) {
+      elBackground.style.opacity = '1';
     }
 
     elBgImg = document.createElement('img');
     elBgImg.classList.add('background');
     elBgImg.setAttribute('alt', 'background');
+    elBgImg.setAttribute('width', `${cw}px`);
+    elBgImg.setAttribute('height', `${ch}px`);
+    elBgImg.setAttribute('loading', 'lazy');
     elBgImg.addEventListener(
       'load',
       () => {
-        document.body.insertBefore(elBgImg, elPre || elPreScreen);
-        if (elPre !== null) {
-          elPre.style.opacity = '0';
+        console.info('[Background] did load');
+        elBackground = document.querySelector('.background');
+        document.body.insertBefore(elBgImg, elBackground || elScreen);
+        console.info('[Background] did insert');
+        if (elBackground !== null) {
+          console.info('[Background] did replace');
+          elBackground.style.opacity = '0';
           setTimeout(() => {
-            elPre.remove();
+            elBackground.remove();
           }, 400);
         }
       },
       false
     );
-    elBgImg.src = `https://source.unsplash.com/${newCw}x${newCh}`;
+    elBgImg.src = `https://source.unsplash.com/random/${cw}x${ch}?t=${Date.now()}`;
   };
 
   // init bg ------------------------------
 
   addEventListenerOnce(elBody, 'mouseover', () => {
-    console.log('Background is loading by mouseover');
-    initBg();
+    initBg('mouseover');
   });
 
   addEventListenerOnce(elBody, 'touchstart', () => {
-    console.log('Background is loading by touchstart');
-    initBg();
+    initBg('touchstart');
   });
 
   // clicks--------------------------------
@@ -118,18 +123,18 @@
           isUpdate = true;
         }
         registration.onupdatefound = () => {
-          console.log('New site update avaliable ;)');
+          console.log('[serviceWorker] New site update avaliable ;)');
           // not `=>` because it doesn't create scope
           registration.installing.onstatechange = function() {
             if (this.state === 'installed') {
-              console.log('serviceWorker installed!');
+              console.log('[serviceWorker] did install!');
               if (isUpdate) {
-                console.log('serviceWorker was updated, please restart tab');
+                console.log('[serviceWorker] did update, please reload tab.');
               } else {
-                console.log('App ready for offline use.');
+                console.log('[serviceWorker] site is ready for offline use.');
               }
             } else {
-              console.log('Site new serviceWorker state: ', this.state);
+              console.log('[serviceWorker] state did change to: ', this.state);
             }
           };
         };
@@ -138,6 +143,6 @@
         console.error(err);
       });
   } else {
-    console.log('serviceWorker is not supported');
+    console.log('[serviceWorker] is not supported :/');
   }
 }
