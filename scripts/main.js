@@ -2,7 +2,6 @@
   console.info('%c ;) Hi!', 'background: #333; color: #DCCD69');
 
   const elBody = document.querySelector('body');
-  const elScreen = document.querySelector('.screen');
 
   // remove polyfill mdn ------------------
   if (!('remove' in Element.prototype)) {
@@ -32,64 +31,29 @@
 
   // background ---------------------------
 
-  const cw =
-    window.innerWidth ||
-    document.documentElement.clientWidth ||
-    document.body.clientWidth ||
-    screen.width;
-  const ch =
-    window.innerHeight ||
-    document.documentElement.clientHeight ||
-    document.body.clientHeight ||
-    screen.height;
-  let elBgImg = null;
+  const removeBg = () => {
+    document.body.classList.remove('background');
+    document.body.style.backgroundImage = '';
+    console.info('[Background] removed');
+  };
+
+  const setBg = () => {
+    if (navigator.onLine === false) {
+      console.warn("[Background] cannot load the bacgkround, you're offline");
+      return;
+    }
+
+    console.info('[Background] loading...');
+    document.body.classList.add('background');
+    document.body.style.backgroundImage = `url('https://source.unsplash.com/weekly/?aesthetic&t=${Date.now()}')`;
+  };
 
   const initBg = eventName => {
     console.log(`Background update listener init by ${eventName} event`);
 
     window.addEventListener('online', setBg);
-    // window.addEventListener('offline', setBg);
+    window.addEventListener('offline', removeBg);
     setBg();
-  };
-
-  const setBg = () => {
-    let elBackground = document.querySelector('.background');
-
-    console.info('[Background] loading...');
-
-    if (navigator.onLine === false) {
-      console.warn("[Background] sorry, you're offline");
-      return;
-    }
-
-    if (elBackground !== null) {
-      elBackground.style.opacity = '1';
-    }
-
-    elBgImg = document.createElement('img');
-    elBgImg.classList.add('background');
-    elBgImg.setAttribute('alt', 'background');
-    elBgImg.setAttribute('width', `${cw}px`);
-    elBgImg.setAttribute('height', `${ch}px`);
-    elBgImg.setAttribute('loading', 'lazy');
-    elBgImg.addEventListener(
-      'load',
-      () => {
-        console.info('[Background] did load');
-        elBackground = document.querySelector('.background');
-        document.body.insertBefore(elBgImg, elBackground || elScreen);
-        console.info('[Background] did insert');
-        if (elBackground !== null) {
-          console.info('[Background] did replace');
-          elBackground.style.opacity = '0';
-          setTimeout(() => {
-            elBackground.remove();
-          }, 400);
-        }
-      },
-      false
-    );
-    elBgImg.src = `https://source.unsplash.com/random/${cw}x${ch}?t=${Date.now()}`;
   };
 
   // init bg ------------------------------
@@ -101,16 +65,6 @@
   addEventListenerOnce(elBody, 'touchstart', () => {
     initBg('touchstart');
   });
-
-  // clicks--------------------------------
-
-  elBody.addEventListener(
-    'click',
-    () => {
-      setBg();
-    },
-    false
-  );
 
   // offline-support-----------------------
 
