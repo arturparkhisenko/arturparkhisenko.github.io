@@ -11,6 +11,7 @@
       }
     ],
     "comment-whitespace-inside": "never",
-    "indentation": 2
+    "indentation": 2,
+    "no-empty-source": null
   }
 }
