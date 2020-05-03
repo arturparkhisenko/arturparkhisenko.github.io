@@ -1,0 +1,29 @@
+/* @see https://allyjs.io/data-tables/focusable.html#label-element */
+
+.toggler {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 1.5em;
+  padding: 0;
+  position: relative;
+  touch-action: pan-x;
+  user-select: none;
+}
+
+.toggler input[type='checkbox'] {
+  opacity: 0;
+}
+
+/* Add focus */
+.toggler input[type='checkbox']:focus + label {
+  outline: #3b99fc auto 5px;
+}
+
+.toggler label {
+  cursor: pointer;
+}

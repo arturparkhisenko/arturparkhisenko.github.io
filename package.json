@@ -3,7 +3,14 @@
   "description": "personal website",
   "version": "1.0.0",
   "author": "Artur Parkhisenko <ikeagold@gmail.com> (https://arturparkhisenko.github.io/)",
+  "private": true,
   "main": "gulpfile.js",
+  "license": "MIT",
+  "homepage": "https://arturparkhisenko.github.io/",
+  "repository": "https://github.com/arturparkhisenko/arturparkhisenko.github.io",
+  "bugs": {
+    "url": "https://github.com/arturparkhisenko/arturparkhisenko.github.io/issues"
+  },
   "scripts": {
     "gulp": "./node_modules/.bin/gulp",
     "build": "cross-env NODE_ENV=production gulp",
@@ -14,13 +21,6 @@
     "lintStyles": "gulp lintStyles",
     "lintScripts": "gulp lintScripts"
   },
-  "keywords": [],
-  "homepage": "https://arturparkhisenko.github.io/",
-  "repository": "https://github.com/arturparkhisenko/arturparkhisenko.github.io",
-  "bugs": {
-    "url": "https://github.com/arturparkhisenko/arturparkhisenko.github.io/issues"
-  },
-  "license": "MIT",
   "browserslist": [
     "> 1%",
     "Firefox ESR",
@@ -30,8 +30,8 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "@babel/core": "^7.9.0",
-    "@babel/preset-env": "^7.9.0",
+    "@babel/core": "^7.9.6",
+    "@babel/preset-env": "^7.9.6",
     "@mapbox/stylelint-processor-arbitrary-tags": "^0.3.0",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.1.0",
@@ -40,12 +40,14 @@
     "cssnano": "^4.1.10",
     "del": "^5.1.0",
     "eslint": "^6.8.0",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.19.0",
     "gulp": "^4.0.2",
     "gulp-eslint": "^6.0.0",
     "gulp-htmlmin": "^5.0.1",
     "gulp-if": "^3.0.0",
     "gulp-imagemin": "^7.1.0",
-    "gulp-load-plugins": "^2.0.2",
+    "gulp-load-plugins": "^2.0.3",
     "gulp-minify-inline": "^1.1.0",
     "gulp-postcss": "^8.0.0",
     "gulp-rename": "^2.0.0",
@@ -54,9 +56,9 @@
     "gulp-stylelint": "^13.0.0",
     "postcss-preset-env": "^6.7.0",
     "postcss-reporter": "^6.0.1",
-    "stylelint": "^13.2.1",
+    "stylelint": "^13.3.3",
     "stylelint-config-standard": "^20.0.0",
-    "terser-webpack-plugin": "^2.3.5",
-    "webpack": "^4.42.1"
+    "terser-webpack-plugin": "^3.0.0",
+    "webpack": "^4.43.0"
   }
 }
