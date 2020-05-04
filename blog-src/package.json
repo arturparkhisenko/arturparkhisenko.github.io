@@ -12,7 +12,7 @@
     "url": "https://github.com/arturparkhisenko/arturparkhisenko.github.io/issues"
   },
   "scripts": {
-    "build": "gatsby build",
+    "build": "gatsby build --prefix-paths",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "npm run develop",
