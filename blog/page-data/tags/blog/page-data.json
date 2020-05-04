@@ -1,0 +1,1 @@
+{"componentChunkName":"component---src-templates-tags-js","path":"/tags/blog/","result":{"data":{"allMarkdownRemark":{"totalCount":1,"edges":[{"node":{"fields":{"slug":"/init/"},"frontmatter":{"title":"Init"}}}]}},"pageContext":{"tag":"blog"}}}
