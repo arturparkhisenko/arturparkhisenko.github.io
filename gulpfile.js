@@ -142,7 +142,10 @@ const html = () =>
     .pipe(dest('./'))
     .pipe($.size({ title: 'html' }));
 
-const reload = done => server.reload()(done);
+const reload = done => {
+  server.reload();
+  done();
+};
 
 const listen = () => {
   browserSync({

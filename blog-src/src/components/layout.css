@@ -1,0 +1,76 @@
+body {
+  /* Solarized */
+  --base03: #002b36; /* dark background */
+  --base02: #073642; /* dark background highlights */
+  --base01: #586e75; /* dark comments, light emphatized */
+  --base00: #657b83; /* light body text */
+  --base0: #839496; /* dark body text */
+  --base1: #93a1a1; /* dark emphatized, light comments */
+  --base2: #eee8d5; /* ligtht background highlights */
+  --base3: #fdf6e3; /* ligtht background */
+  --yellow: #b58900;
+  --orange: #cb4b16;
+  --red: #dc322f;
+  --magenta: #d33682;
+  --violet: #6c71c4;
+  --blue: #268bd2;
+  --cyan: #2aa198;
+  --green: #859900;
+
+  /* RGB logo */
+  --rgb-red: #c01300;
+  --rgb-green: #61b219;
+  --rgb-blue: #36557f;
+
+  /* Variables */
+  --bg: #f9f9f9;
+  --textNormal: var(--base03);
+  --textTitle: var(--base02);
+  --textLink: var(--blue);
+  --textLinkVisited: var(--blue);
+  --hr: var(--base03);
+
+  /* Styles */
+  background-color: var(--bg);
+  color: var(--textNormal);
+  -webkit-font-smoothing: antialiased;
+}
+
+body.dark {
+  --bg: var(--base03);
+  --textNormal: var(--base0);
+  --textTitle: var(--yellow);
+  --textLink: var(--cyan);
+  --textLinkVisited: var(--cyan);
+  --hr: var(--base01);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--textTitle);
+}
+
+a {
+  color: var(--textLink);
+}
+
+a:visited {
+  color: var(--textLinkVisited);
+}
+
+/* gatsby-remark-autolink-headers - use theme colours for the link icon */
+a.anchor svg[aria-hidden='true'] {
+  stroke: var(--textLink);
+}
+
+blockquote {
+  border-color: var(--base01);
+}
+
+hr {
+  background: var(--hr);
+}

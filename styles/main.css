@@ -36,10 +36,7 @@ footer {
 
 small {
   display: flex;
-}
-
-footer small {
-  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 p {
@@ -55,7 +52,8 @@ a {
 a,
 a:visited {
   margin: 0.3em 0.2em 0;
-  padding: 2px 10px;
+  padding-left: 10px;
+  line-height: 1.6rem;
   color: rgba(220, 220, 220, 0.9);
   cursor: pointer;
   transition: all 0.1s;
@@ -114,23 +112,16 @@ address > a:visited {
 }
 
 .small-urls {
-  display: inline-flex;
   align-items: center;
-  opacity: 0.4;
+  display: inline-flex;
+  font-family: monospace;
   margin: 0.3em 0.2em 0;
+  opacity: 0.7;
   padding: 2px 10px;
 }
 
 .small-urls:hover {
   opacity: 1;
-}
-
-.license {
-  margin-right: 1em;
-}
-
-.jack {
-  margin-left: 1em;
 }
 
 @media (prefers-color-scheme: dark) {
