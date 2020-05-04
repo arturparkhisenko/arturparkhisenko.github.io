@@ -45,7 +45,8 @@
 
     console.info('[Background] loading...');
     document.body.classList.add('background');
-    document.body.style.backgroundImage = `url('https://source.unsplash.com/weekly/?aesthetic&t=${Date.now()}')`;
+    // @see https://source.unsplash.com/
+    document.body.style.backgroundImage = `url('https://source.unsplash.com/weekly/?aesthetic')`;
   };
 
   const initBg = eventName => {
