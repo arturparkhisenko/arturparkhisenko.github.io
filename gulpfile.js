@@ -58,6 +58,7 @@ const scripts = done => {
       devtool: 'source-map',
       watch: false,
       output: {
+        // ecmaVersion: 5, // webpack 5 property
         path: path.resolve(__dirname, './scripts'),
         filename: '[name].min.js'
       },
