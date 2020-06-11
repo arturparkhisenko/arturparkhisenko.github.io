@@ -12,7 +12,11 @@ const BlogIndex = ({ data, location }) => {
   const posts = data.allMarkdownRemark.edges;
 
   return (
-    <Layout location={location} title={siteTitle}>
+    <Layout
+      feedbackUrl={data.site.siteMetadata.feedbackUrl}
+      location={location}
+      title={siteTitle}
+    >
       <SEO title="All posts" />
       <Bio />
       {posts.map(({ node }) => {
@@ -29,7 +33,11 @@ const BlogIndex = ({ data, location }) => {
                   {title}
                 </Link>
               </h2>
-              <small>{node.frontmatter.date}</small>
+              <small>
+                {node.frontmatter.date}
+                {' · ⏳'}
+                {node.fields.readingTime.text}
+              </small>
             </header>
             <section>
               <p
@@ -55,6 +63,7 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
+        feedbackUrl
       }
     }
     allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
@@ -63,6 +72,9 @@ export const pageQuery = graphql`
           excerpt
           fields {
             slug
+            readingTime {
+              text
+            }
           }
           frontmatter {
             date(formatString: "MMMM DD, YYYY")

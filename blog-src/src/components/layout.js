@@ -9,7 +9,7 @@ import { rhythm } from '../utils/typography';
 
 import './layout.css';
 
-const Layout = ({ children, location, title }) => {
+const Layout = ({ children, feedbackUrl, location, title }) => {
   const rootPath = `${__PATH_PREFIX__}/`;
   let header = (
     <Link style={{ boxShadow: `none`, color: `inherit` }} to={`/`}>
@@ -32,16 +32,29 @@ const Layout = ({ children, location, title }) => {
         padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`
       }}
     >
-      <header style={{ alignItems: `flex-start`, display: `flex`, justifyContent: `space-between` }}>
+      <header
+        style={{
+          alignItems: `flex-start`,
+          display: `flex`,
+          justifyContent: `space-between`
+        }}
+      >
         {header}
         <ThemeToggler>{Toggler}</ThemeToggler>
       </header>
       <main>{children}</main>
       <footer style={{ opacity: 0.8 }}>
         <small>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
+          <a href={feedbackUrl} rel="noopener noreferrer" target="_blank">
+            <span aria-label="Feedback" role="img">
+              📝
+            </span>{' '}
+            Give feedback
+          </a>
+          <div>
+            © {new Date().getFullYear()}, Built with{' '}
+            <a href="https://www.gatsbyjs.org">Gatsby</a>
+          </div>
         </small>
       </footer>
     </div>
@@ -49,7 +62,11 @@ const Layout = ({ children, location, title }) => {
 };
 
 Layout.propTypes = {
-  children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]),
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ]),
+  feedbackUrl: PropTypes.string,
   location: PropTypes.object,
   title: PropTypes.string
 };

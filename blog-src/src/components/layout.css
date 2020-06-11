@@ -29,6 +29,7 @@ body {
   --textLink: var(--blue);
   --textLinkVisited: var(--blue);
   --hr: var(--base03);
+  --scrollBarThumb: var(--base03);
 
   /* Styles */
   background-color: var(--bg);
@@ -43,6 +44,7 @@ body.dark {
   --textLink: var(--cyan);
   --textLinkVisited: var(--cyan);
   --hr: var(--base01);
+  --scrollBarThumb: var(--base01);
 }
 
 h1,
@@ -73,4 +75,27 @@ blockquote {
 
 hr {
   background: var(--hr);
+}
+
+/* Scrollbars */
+
+body.dark *::-webkit-scrollbar {
+  width: 0.6rem;
+  height: 0.6rem;
+  box-shadow: inset 0 0 0.4rem rgba(0, 0, 0, 0.3);
+}
+
+body.dark *::-webkit-scrollbar-thumb {
+  border-radius: 0.4rem;
+  background-color: var(--scrollBarThumb);
+}
+
+/* Changes for prismjs: font-size, padding */
+
+code[class*='language-'] {
+  font-size: 85%;
+}
+
+:not(pre) > code[class*='language-'] {
+  padding: 0.2em 0.4em;
 }
