@@ -13,7 +13,11 @@ const BlogPost = ({ data, location, pageContext }) => {
   const { previous, next } = pageContext;
 
   return (
-    <Layout location={location} title={siteTitle}>
+    <Layout
+      feedbackUrl={data.site.siteMetadata.feedbackUrl}
+      location={location}
+      title={siteTitle}
+    >
       <SEO
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
@@ -82,6 +86,7 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
+        feedbackUrl
       }
     }
     markdownRemark(fields: { slug: { eq: $slug } }) {
