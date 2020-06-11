@@ -5,6 +5,7 @@ let typography;
 
 // Replace the first font in the font-stack for the header
 theme.headerFontFamily[0] = 'Source Sans Pro';
+theme.baseFontSize = '18px';
 
 typography = new Typography(theme);
 

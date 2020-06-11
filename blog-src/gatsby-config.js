@@ -11,7 +11,8 @@ module.exports = {
     social: {
       twitter: 'lifeasecond'
     },
-    siteUrl: `https://arturparkhisenko.github.io/blog/`
+    siteUrl: `https://arturparkhisenko.github.io/`,
+    feedbackUrl: `https://forms.gle/fCsxvTqoJsx999m79`
   },
   plugins: [
     {
@@ -55,6 +56,7 @@ module.exports = {
           `gatsby-remark-prismjs`, // should be placed after `gatsby-remark-autolink-headers`
           `gatsby-remark-copy-linked-files`,
           `gatsby-remark-reading-time`,
+          `gatsby-remark-abbr`,
           `gatsby-remark-smartypants`
         ]
       }
