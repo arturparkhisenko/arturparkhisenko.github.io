@@ -55,9 +55,8 @@ a:visited {
   margin: 0.3rem;
   padding-left: 10px;
   line-height: 1.6rem;
-  color: rgba(220, 220, 220, 0.9);
+  color: #dcdcdc;
   cursor: pointer;
-  transition: all 0.1s;
 }
 
 a:active,
