@@ -30,8 +30,8 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "@babel/core": "^7.10.2",
-    "@babel/preset-env": "^7.10.2",
+    "@babel/core": "^7.10.4",
+    "@babel/preset-env": "^7.10.4",
     "@mapbox/stylelint-processor-arbitrary-tags": "^0.3.0",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.1.0",
@@ -39,9 +39,9 @@
     "cross-env": "^7.0.2",
     "cssnano": "^4.1.10",
     "del": "^5.1.0",
-    "eslint": "^7.2.0",
-    "eslint-plugin-jsx-a11y": "^6.2.3",
-    "eslint-plugin-react": "^7.20.0",
+    "eslint": "^7.4.0",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-react": "^7.20.3",
     "gulp": "^4.0.2",
     "gulp-eslint": "^6.0.0",
     "gulp-htmlmin": "^5.0.1",
@@ -56,9 +56,9 @@
     "gulp-stylelint": "^13.0.0",
     "postcss-preset-env": "^6.7.0",
     "postcss-reporter": "^6.0.1",
-    "stylelint": "^13.6.0",
+    "stylelint": "^13.6.1",
     "stylelint-config-standard": "^20.0.0",
-    "terser-webpack-plugin": "^3.0.3",
+    "terser-webpack-plugin": "^3.0.6",
     "webpack": "^4.43.0"
   }
 }
