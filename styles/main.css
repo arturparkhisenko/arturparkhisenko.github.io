@@ -3,7 +3,7 @@
   --fontStack: font-family: System, Fixedsys, Consolas, monospace;
   --fontStack: -apple-system, "blinkmacsystemfont", ".SFNSDisplay-Regular", ".SFNSText-Regular", "SF UI Text", "San Francisco", "Noto Sans", "Helvetica Neue", "Roboto", "Droid Sans", "Oxygen", "Lucida Grande", "Segoe UI", "Fira Sans", "ubuntu", "cantarell", "helvetica", "arial", sans-serif;
   --fontColor: #fafafa;
-  --fontSize: 1em;
+  --fontSize: 1rem;
   --colorLink: red;
   --colorLinkHover: green;
 }
@@ -17,16 +17,16 @@ main {
 }
 
 main {
-  font-size: 1.2em;
+  font-size: 1.2rem;
 }
 
 h1 {
   margin: 0;
-  font-size: 1.6em;
+  font-size: 1.6rem;
 }
 
 em {
-  font-size: 1.4em;
+  font-size: 1.4rem;
 }
 
 footer {
@@ -37,10 +37,11 @@ footer {
 small {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 p {
-  margin: 0.1em;
+  margin: 0.1rem;
 }
 
 /**normalize.css*/
@@ -51,7 +52,7 @@ a {
 
 a,
 a:visited {
-  margin: 0.3em 0.2em 0;
+  margin: 0.3rem;
   padding-left: 10px;
   line-height: 1.6rem;
   color: rgba(220, 220, 220, 0.9);
@@ -65,7 +66,7 @@ a:hover {
 }
 
 address {
-  margin-bottom: 0.5em;
+  margin-bottom: 0.5rem;
 }
 
 address > a,
@@ -77,18 +78,13 @@ address > a:visited {
   background: #f7df31;
 }
 
-@media all and (min-width: 40em) and (min-height: 20em) {
+@media all and (min-width: 40rem) and (min-height: 20rem) {
   html {
     font-size: 140%;
   }
 
   .screen {
-    padding: 2em;
-  }
-
-  a,
-  a:visited {
-    margin: 0;
+    padding: 2rem;
   }
 }
 
@@ -115,7 +111,6 @@ address > a:visited {
   align-items: center;
   display: inline-flex;
   font-family: monospace;
-  margin: 0.3em 0.2em 0;
   opacity: 0.7;
   padding: 2px 10px;
 }
@@ -144,11 +139,11 @@ address > a:visited {
   }
 
   a[href]::after {
-    content: " (" attr(href) ")";
+    content: ' (' attr(href) ')';
   }
 
   a::after {
-    content: "";
+    content: '';
   }
 
   img {
