@@ -55,7 +55,7 @@ const scripts = done => {
         hints: 'warning' // false, 'error'
       },
       mode: production === true ? 'production' : 'development',
-      devtool: 'source-map',
+      devtool: production === true ? false : 'source-map',
       watch: false,
       output: {
         // ecmaVersion: 5, // webpack 5 property
