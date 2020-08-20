@@ -90,12 +90,7 @@ body.dark *::-webkit-scrollbar-thumb {
   background-color: var(--scrollBarThumb);
 }
 
-/* Changes for prismjs: font-size, padding */
-
+/* The prismjs style changed font-family for the the inlined code */
 code[class*='language-'] {
-  font-size: 85%;
-}
-
-:not(pre) > code[class*='language-'] {
-  padding: 0.2em 0.4em;
+  font-family: monospace;
 }

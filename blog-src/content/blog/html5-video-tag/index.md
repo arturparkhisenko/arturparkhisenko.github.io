@@ -34,7 +34,7 @@ As you may see, we have used multiple attributes of the `<video />` tag. One of 
 
 Because the video tag is a media element, it has various [APIs](https://html.spec.whatwg.org/multipage/media.html#htmlmediaelement) and [events](https://html.spec.whatwg.org/multipage/media.html#mediaevents) which are accessible through JavaScript:
 
-```js
+```javascript
 // Adding some event listeners
 elVideo.addEventListener('volumechange', console.log);
 elVideo.addEventListener('pause', console.log);
