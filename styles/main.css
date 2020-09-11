@@ -95,8 +95,8 @@ address > a:visited {
   flex-direction: column;
   margin: 2%;
   padding: 5%;
-  background-color: rgba(0, 0, 0, 0.8);
-  color: rgba(240, 240, 240, 0.8);
+  background-color: rgba(0, 0, 0, 0.95);
+  color: #f0f0f0;
   justify-content: center;
   align-items: center;
 }
