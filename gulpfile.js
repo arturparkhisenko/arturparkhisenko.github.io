@@ -1,5 +1,3 @@
-// LICENSE.md
-
 const path = require('path');
 const browserSync = require('browser-sync');
 const cssnano = require('cssnano');
@@ -197,5 +195,6 @@ Object.assign(exports, {
   lintScripts,
   lintStyles,
   scripts,
+  styles,
   serve
 });

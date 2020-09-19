@@ -15,7 +15,9 @@
   },
   "parser": "babel-eslint",
   "rules": {
+    "arrow-parens": ["warn", "as-needed"],
     "comma-dangle": ["error", "never"],
+    "function-paren-newline": "off",
     "no-console": 0,
     "no-param-reassign": 0,
     "require-jsdoc": "off"
