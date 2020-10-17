@@ -48,7 +48,7 @@ const scripts = done => {
   webpack(
     {
       entry: './scripts/main.js',
-      target: 'web',
+      target: 'web', // no es5
       performance: {
         hints: 'warning' // false, 'error'
       },
@@ -78,7 +78,6 @@ const scripts = done => {
         minimize: true,
         minimizer: [
           new TerserPlugin({
-            sourceMap: production === false,
             terserOptions: {
               output: { comments: false }
             },
@@ -89,6 +88,7 @@ const scripts = done => {
     },
     (error, stats) => {
       if (error) {
+        console.log('[webpack] Error:', error);
         throw new Error(error);
       }
       console.log('[webpack]', stats.toString({ chunks: false, colors: true }));
