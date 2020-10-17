@@ -1,6 +1,6 @@
 // US Web Design Standards theme uses "Source Sans Pro" for body text
-import 'typeface-source-sans-pro';
+import 'fontsource-source-sans-pro/latin.css';
 // Logo and blog title font
-import 'typeface-press-start-2p';
+import 'fontsource-press-start-2p/latin.css'
 // Highlight
 import 'prismjs/themes/prism-tomorrow.css';
