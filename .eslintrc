@@ -13,7 +13,7 @@
   "globals": {
     "__PATH_PREFIX__": "readonly"
   },
-  "parser": "babel-eslint",
+  "parser": "@babel/eslint-parser",
   "rules": {
     "arrow-parens": ["warn", "as-needed"],
     "comma-dangle": ["error", "never"],
