@@ -82,6 +82,7 @@ module.exports = {
     },
     `gatsby-plugin-catch-links`,
     `gatsby-transformer-sharp`,
+    `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-dark-mode`,
     `gatsby-plugin-feed`,

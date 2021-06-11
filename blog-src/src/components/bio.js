@@ -8,7 +8,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
-import Image from 'gatsby-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 
 import { rhythm } from '../utils/typography';
 
@@ -19,9 +19,7 @@ const Bio = ({ mode }) => {
         absolutePath: { regex: "/profile-pic-artur-parkhisenko.png/" }
       ) {
         childImageSharp {
-          fixed(width: 50, height: 50) {
-            ...GatsbyImageSharpFixed
-          }
+          gatsbyImageData(width: 50, height: 50, layout: FIXED)
         }
       }
       site {
@@ -45,8 +43,8 @@ const Bio = ({ mode }) => {
       }}
     >
       <br />
-      <Image
-        fixed={data.avatar.childImageSharp.fixed}
+      <GatsbyImage
+        image={data.avatar.childImageSharp.gatsbyImageData}
         alt={author.name}
         style={{
           marginRight: rhythm(1 / 2),
