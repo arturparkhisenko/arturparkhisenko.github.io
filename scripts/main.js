@@ -68,7 +68,7 @@ if ('serviceWorker' in navigator) {
         isUpdate = true;
       }
       registration.onupdatefound = () => {
-        console.log('[serviceWorker] New site update avaliable ;)');
+        console.log('[serviceWorker] New site update available ;)');
         // not `=>` because it doesn't create scope
         registration.installing.onstatechange = function () {
           if (this.state === 'installed') {
@@ -85,7 +85,7 @@ if ('serviceWorker' in navigator) {
       };
     })
     .catch(err => {
-      console.error(err);
+      console.error('[serviceWorker] error', err);
     });
 } else {
   console.log('[serviceWorker] is not supported :/');

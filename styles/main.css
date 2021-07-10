@@ -139,6 +139,14 @@ address > a:visited {
     content: '';
   }
 
+  abbr[title]::after {
+    content: ' (' attr(title) ')';
+  }
+
+  abbr::after {
+    content: '';
+  }
+
   img {
     page-break-inside: avoid;
   }
