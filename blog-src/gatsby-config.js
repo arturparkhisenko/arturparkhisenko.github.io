@@ -52,11 +52,24 @@ module.exports = {
               rel: `noopener noreferrer`
             }
           },
+          {
+            resolve: `gatsby-remark-acronyms`,
+            options: {
+              acronyms: {
+                ADs: 'Advertisement',
+                API: 'Application Programming Interface',
+                CSS: `Cascading Style Sheets`,
+                HTML: 'Hyper Text Markup Language',
+                MSE: 'Media Source Extensions',
+                TIL: 'Today I Learned',
+                UI: 'User Interface'
+              }
+            }
+          },
           `gatsby-remark-autolink-headers`,
           `gatsby-remark-prismjs`, // should be placed after `gatsby-remark-autolink-headers`
           `gatsby-remark-copy-linked-files`,
           `gatsby-remark-reading-time`,
-          `gatsby-remark-abbr`,
           `gatsby-remark-smartypants`
         ]
       }

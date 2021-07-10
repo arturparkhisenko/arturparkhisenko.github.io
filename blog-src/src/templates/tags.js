@@ -37,7 +37,7 @@ Tags.propTypes = {
 export default Tags;
 
 export const pageQuery = graphql`
-  query($tag: String) {
+  query ($tag: String) {
     allMarkdownRemark(
       limit: 2000
       sort: { fields: [frontmatter___date], order: DESC }

@@ -5,12 +5,6 @@ description: 'About HTML5 video tag'
 tags: ['video-tech', 'video', 'html', 'javascript', 'MSE', ‘streaming’]
 ---
 
-*[ADs]: Advertisement
-*[API]: Application Programming Interface
-*[HTML]: Hyper Text Markup Language
-*[MSE]: Media Source Extensions
-*[UI]: User Interface
-
 You may have noticed that the number of platforms for tutorials, vlogging, streaming, ADs, shows, and series has been growing fast. The decrease of relative prices for streaming devices like smartphones, smart TVs, combined with stable internet connection availability, helped to boost the demand for video content significantly. Since the industry started to grow, it naturally requires more people to keep it afloat. And I am one of those people - a video engineer.
 
 I have been doing this for five years already, and I have always found it challenging to find useful information about working with video on the web. This is why I decided to write a series of articles to share my experience on how the video works, and I hope it can serve as a solid source of knowledge.
