@@ -1,29 +1,26 @@
-import PropTypes from 'prop-types';
 import React from 'react';
+import useDarkMode from 'use-dark-mode';
 
 import './toggler.css';
 
-export const Toggler = ({ theme, toggleTheme }) => (
-  <div
-    className="toggler"
-    title={`${theme === 'dark' ? 'Light' : 'Dark'} mode`}
-  >
-    <input
-      aria-label={`${theme === 'dark' ? 'Light' : 'Dark'} mode`}
-      checked={theme === 'dark'}
-      id="toggler"
-      onChange={event =>
-        toggleTheme(event.target.checked === true ? 'dark' : 'light')
-      }
-      type="checkbox"
-    />
-    <label htmlFor="toggler" tabIndex="-1">
-      {theme === 'dark' ? '🌇' : '🌃'}
-    </label>
-  </div>
-);
+export const Toggler = () => {
+  const darkMode = useDarkMode(false);
 
-Toggler.propTypes = {
-  theme: PropTypes.string,
-  toggleTheme: PropTypes.func.isRequired
+  return (
+    <div
+      className="toggler"
+      title={`${darkMode.value === true ? 'Light' : 'Dark'} mode`}
+    >
+      <input
+        aria-label={`${darkMode.value === true ? 'Light' : 'Dark'} mode`}
+        checked={darkMode.value === true}
+        id="toggler"
+        onChange={darkMode.toggle}
+        type="checkbox"
+      />
+      <label htmlFor="toggler" tabIndex="-1">
+        {darkMode.value === true ? '🌇' : '🌃'}
+      </label>
+    </div>
+  );
 };

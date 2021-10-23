@@ -1,5 +1,4 @@
 import { Link } from 'gatsby';
-import { ThemeToggler } from 'gatsby-plugin-dark-mode';
 import PropTypes from 'prop-types';
 import React from 'react';
 
@@ -40,7 +39,7 @@ const Layout = ({ children, feedbackUrl, location, title }) => {
         }}
       >
         {header}
-        <ThemeToggler>{Toggler}</ThemeToggler>
+        <Toggler />
       </header>
       <main>{children}</main>
       <footer style={{ opacity: 0.8 }}>
