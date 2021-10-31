@@ -37,7 +37,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-body.dark {
+body.dark-mode {
   --bg: var(--base03);
   --textNormal: var(--base0);
   --textTitle: var(--yellow);
@@ -79,13 +79,13 @@ hr {
 
 /* Scrollbars */
 
-body.dark *::-webkit-scrollbar {
+body.dark-mode *::-webkit-scrollbar {
   width: 0.6rem;
   height: 0.6rem;
   box-shadow: inset 0 0 0.4rem rgba(0, 0, 0, 0.3);
 }
 
-body.dark *::-webkit-scrollbar-thumb {
+body.dark-mode *::-webkit-scrollbar-thumb {
   border-radius: 0.4rem;
   background-color: var(--scrollBarThumb);
 }

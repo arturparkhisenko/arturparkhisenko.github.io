@@ -36,6 +36,7 @@ exports.createPages = async ({ actions, graphql }) => {
   `);
 
   if (result.errors) {
+    reporter.panicOnBuild(`Error while running GraphQL query.`);
     throw result.errors;
   }
 
