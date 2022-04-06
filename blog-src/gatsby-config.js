@@ -69,7 +69,6 @@ module.exports = {
           'gatsby-remark-autolink-headers',
           'gatsby-remark-prismjs', // should be placed after 'gatsby-remark-autolink-headers'
           'gatsby-remark-copy-linked-files',
-          'gatsby-remark-reading-time',
           'gatsby-remark-smartypants'
         ]
       }
