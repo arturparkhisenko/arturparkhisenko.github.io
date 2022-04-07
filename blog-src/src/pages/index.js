@@ -35,8 +35,7 @@ const BlogIndex = ({ data, location }) => {
               </h2>
               <small>
                 {node.frontmatter.date}
-                {' · ⏳'}
-                {node.fields.readingTime.text}
+                {` · ⏳ ${node.timeToRead} minutes`}
               </small>
             </header>
             <section>
@@ -70,11 +69,9 @@ export const pageQuery = graphql`
       edges {
         node {
           excerpt
+          timeToRead
           fields {
             slug
-            readingTime {
-              text
-            }
           }
           frontmatter {
             date(formatString: "MMMM DD, YYYY")

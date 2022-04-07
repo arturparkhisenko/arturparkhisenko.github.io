@@ -40,8 +40,7 @@ const BlogPost = ({ data, location, pageContext }) => {
             }}
           >
             {post.frontmatter.date}
-            {' · ⏳'}
-            {post.fields.readingTime.text}
+            {` · ⏳ ${post.timeToRead} minutes`}
           </p>
         </header>
         <section dangerouslySetInnerHTML={{ __html: post.html }} />
@@ -93,15 +92,11 @@ export const pageQuery = graphql`
       id
       excerpt(pruneLength: 160)
       html
+      timeToRead
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")
         description
-      }
-      fields {
-        readingTime {
-          text
-        }
       }
     }
   }
