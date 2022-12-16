@@ -12,7 +12,7 @@ exports.createPages = async ({ actions, graphql }) => {
   const result = await graphql(`
     {
       postsRemark: allMarkdownRemark(
-        sort: { order: DESC, fields: [frontmatter___date] }
+        sort: { frontmatter: { date: DESC } }
         limit: 2000
       ) {
         edges {

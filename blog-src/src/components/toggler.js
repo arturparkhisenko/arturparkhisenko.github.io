@@ -1,5 +1,6 @@
 import React from 'react';
-import useDarkMode from 'use-dark-mode';
+
+import useDarkMode from '../utils/use-dark-mode';
 
 import './toggler.css';
 

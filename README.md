@@ -1,6 +1,6 @@
 # Artur Parkhisenko :video_camera: :video_game:, personal website
 
-[![GitHub license](https://img.shields.io/github/license/arturparkhisenko/arturparkhisenko.github.io.svg)](https://github.com/arturparkhisenko/arturparkhisenko.github.io/blob/master/LICENSE.md) [![dependencies Status](https://david-dm.org/arturparkhisenko/arturparkhisenko.github.io/dev-status.svg)](https://david-dm.org/arturparkhisenko/arturparkhisenko.github.io?type=dev)
+[![GitHub license](https://img.shields.io/github/license/arturparkhisenko/arturparkhisenko.github.io.svg)](https://github.com/arturparkhisenko/arturparkhisenko.github.io/blob/master/LICENSE.md) ![dependencies Status](https://img.shields.io/librariesio/github/arturparkhisenko/arturparkhisenko.github.io)
 
 > No Third-Party Tracking, No Advertising Services, No Cookies
 
