@@ -8,9 +8,10 @@ const preferDarkQuery = '(prefers-color-scheme: dark)';
 const classNameDark = 'dark-mode';
 const classNameLight = 'light-mode';
 const storageKey = 'darkMode';
+const glbl = this || global;
 
 const initialize = () => {
-  const mql = window.matchMedia ? window.matchMedia(preferDarkQuery) : {};
+  const mql = glbl.matchMedia ? glbl.matchMedia(preferDarkQuery) : {};
 
   const mediaQueryEventTarget = {
     addEventListener: (_, handler) =>
@@ -30,6 +31,11 @@ const initialize = () => {
       element.classList.remove(val === 'true' ? classNameLight : classNameDark);
     };
 
+  // Mock for SSR
+  if (glbl.localStorage === undefined) {
+    glbl.localStorage = { getItem: () => null, setItem: () => null };
+  }
+
   return {
     getDefaultOnChange,
     mediaQueryEventTarget,
@@ -43,13 +49,13 @@ const useDarkMode = (initialValue = 'false') => {
     []
   );
   const [mode, setMode] = useState(
-    localStorage.getItem(storageKey) || initialValue
+    glbl.localStorage.getItem(storageKey) || initialValue
   );
 
-  const element = window.document && window.document.body;
+  const element = glbl.document && glbl.document.body;
 
   const setState = value => {
-    localStorage.setItem(storageKey, value);
+    glbl.localStorage.setItem(storageKey, value);
     setMode(value);
   };
 
