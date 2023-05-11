@@ -61,7 +61,10 @@ addEventListenerOnce(elBody, 'touchstart', () => {
 
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker
-    .register('./../sw.js', { scope: '/' })
+    .register(
+      new URL('./sw.js', import.meta.url),
+      { type: 'module', scope: '/' }
+    )
     .then(registration => {
       let isUpdate = false;
       if (registration.active) {
