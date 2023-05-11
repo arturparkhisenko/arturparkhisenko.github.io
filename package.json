@@ -4,22 +4,11 @@
   "version": "1.0.0",
   "author": "Artur Parkhisenko <ikeagold@gmail.com> (https://arturparkhisenko.github.io/)",
   "private": true,
-  "main": "gulpfile.js",
   "license": "MIT",
   "homepage": "https://arturparkhisenko.github.io/",
   "repository": "https://github.com/arturparkhisenko/arturparkhisenko.github.io",
   "bugs": {
     "url": "https://github.com/arturparkhisenko/arturparkhisenko.github.io/issues"
-  },
-  "scripts": {
-    "gulp": "./node_modules/.bin/gulp",
-    "build": "cross-env NODE_ENV=production gulp",
-    "start": "cross-env NODE_ENV=development gulp serve",
-    "prod": "cross-env NODE_ENV=production gulp serve",
-    "styles": "gulp styles",
-    "scripts": "gulp scripts",
-    "lintStyles": "gulp lintStyles",
-    "lintScripts": "gulp lintScripts"
   },
   "browserslist": [
     "> 1%",
@@ -29,39 +18,20 @@
     "not ie 11",
     "not op_mini all"
   ],
+  "scripts": {
+    "build": "parcel build",
+    "start": "parcel"
+  },
+  "source": "./src/index.html",
   "devDependencies": {
-    "@babel/core": "^7.20.5",
-    "@babel/eslint-parser": "^7.19.1",
-    "@babel/preset-env": "^7.20.2",
-    "@mapbox/stylelint-processor-arbitrary-tags": "^0.4.0",
-    "babel-loader": "^9.1.0",
-    "browser-sync": "^2.27.10",
-    "cross-env": "^7.0.3",
-    "cssnano": "^5.1.14",
-    "del": "^6.0.0",
-    "eslint": "^8.29.0",
-    "eslint-plugin-jsx-a11y": "^6.6.1",
-    "eslint-plugin-react": "^7.31.11",
-    "gulp": "^4.0.2",
-    "gulp-cli": "^2.3.0",
-    "gulp-eslint": "^6.0.0",
-    "gulp-htmlmin": "^5.0.1",
-    "gulp-if": "^3.0.0",
-    "gulp-imagemin": "7.1.0",
-    "gulp-load-plugins": "^2.0.8",
-    "gulp-minify-inline": "^1.1.0",
-    "gulp-postcss": "^9.0.1",
-    "gulp-rename": "^2.0.0",
-    "gulp-size": "^4.0.1",
-    "gulp-sourcemaps": "^3.0.0",
-    "gulp-stylelint": "^13.0.0",
-    "postcss": "^8.4.20",
-    "postcss-preset-env": "^7.8.3",
-    "postcss-reporter": "^7.0.5",
-    "stylelint": "^14.16.0",
-    "stylelint-config-standard": "^29.0.0",
-    "terser-webpack-plugin": "^5.3.6",
-    "webpack": "^5.75.0",
-    "webpack-cli": "^5.0.1"
+    "@babel/core": "^7.21.8",
+    "@parcel/packager-raw-url": "^2.8.3",
+    "@parcel/transformer-webmanifest": "^2.8.3",
+    "eslint": "^8.40.0",
+    "eslint-plugin-jsx-a11y": "^6.7.1",
+    "eslint-plugin-react": "^7.32.2",
+    "parcel": "^2.8.3",
+    "stylelint": "^15.6.1",
+    "stylelint-config-standard": "^33.0.0"
   }
 }

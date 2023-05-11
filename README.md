@@ -6,7 +6,7 @@
 
 ## commands
 
-- `npm start`
+- `npm run start`
 - `npm run build`
 
 ## before build
