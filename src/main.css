@@ -63,8 +63,8 @@ address {
   margin-bottom: 0.5rem;
 }
 
-address > a,
-address > a:visited {
+address>a,
+address>a:visited {
   display: inline-block;
 }
 

@@ -6,7 +6,7 @@
 
 ## commands
 
-- `npm start`
+- `npm run start`
 - `npm run build`
 
 ## before build
@@ -15,14 +15,14 @@
 
 ## after build
 
-- [webpagetest](https://www.webpagetest.org/result/161116_Z7_JTRS/)
-- [tools.pingdom](https://tools.pingdom.com/#!/beZZIb/https://arturparkhisenko.github.io/)
-- [pagespeed](https://developers.google.com/speed/pagespeed/insights/?url=https%3A%2F%2Farturparkhisenko.github.io%2F&tab=mobile)
+- [webpagetest](https://www.webpagetest.org/)
+- [tools.pingdom](https://tools.pingdom.com/)
+- [pagespeed](https://pagespeed.web.dev/analysis/https-arturparkhisenko-github-io/4b30xza8jj?utm_source=psi&utm_medium=redirect&form_factor=mobile)
 - [csp-evaluator](https://csp-evaluator.withgoogle.com/)
-- [thinkwithgoogle.withgoogle](https://www.thinkwithgoogle.com/feature/testmysite/)
+- [thinkwithgoogle.withgoogle](https://www.thinkwithgoogle.com/marketing-strategies/app-and-mobile/mobile-tools-to-optimize-site-and-app/)
 - [validator.w3.org/nu](https://validator.w3.org/nu/?showoutline=yes&doc=https%3A%2F%2Farturparkhisenko.github.io%2F)
-- [webhint](https://webhint.io/scanner/)
-- [lighthouse](https://developers.google.com/web/tools/lighthouse/)
+- [webhint](https://webhint.io/)
+- [lighthouse](https://developer.chrome.com/docs/lighthouse/overview/)
 - [observatory.mozilla.org](https://observatory.mozilla.org/)
 
 ## to-do

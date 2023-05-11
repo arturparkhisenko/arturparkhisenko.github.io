@@ -56,37 +56,3 @@ addEventListenerOnce(elBody, 'mouseover', () => {
 addEventListenerOnce(elBody, 'touchstart', () => {
   initBg('touchstart');
 });
-
-// offline-support-----------------------
-
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker
-    .register('./../sw.js', { scope: '/' })
-    .then(registration => {
-      let isUpdate = false;
-      if (registration.active) {
-        isUpdate = true;
-      }
-      registration.onupdatefound = () => {
-        console.log('[serviceWorker] New site update available ;)');
-        // not `=>` because it doesn't create scope
-        registration.installing.onstatechange = function () {
-          if (this.state === 'installed') {
-            console.log('[serviceWorker] did install!');
-            if (isUpdate) {
-              console.log('[serviceWorker] did update, please reload tab.');
-            } else {
-              console.log('[serviceWorker] site is ready for offline use.');
-            }
-          } else {
-            console.log('[serviceWorker] state did change to: ', this.state);
-          }
-        };
-      };
-    })
-    .catch(err => {
-      console.error('[serviceWorker] error', err);
-    });
-} else {
-  console.log('[serviceWorker] is not supported :/');
-}

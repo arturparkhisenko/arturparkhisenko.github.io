@@ -51,12 +51,7 @@ $RECYCLE.BIN/
 #######################
 .gitconfig.local
 
-# Compiled Python files #
-#########################
-*.pyc
-
 # Other #
 #########
-additional-favicon
-scripts/*.map
-styles/*.map
+.parcel-cache
+dist/*.map
