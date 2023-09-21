@@ -1,7 +1,23 @@
 {
-  "name": "stellar-satellite",
+  "name": "arturparkhisenko",
+  "description": "personal website",
+  "version": "1.0.0",
+  "author": "Artur Parkhisenko",
+  "private": true,
+  "license": "MIT",
   "type": "module",
-  "version": "0.0.1",
+  "homepage": "https://arturparkhisenko.github.io/",
+  "repository": "https://github.com/arturparkhisenko/arturparkhisenko.github.io",
+  "bugs": {
+    "url": "https://github.com/arturparkhisenko/arturparkhisenko.github.io/issues"
+  },
+  "browserslist": [
+    "> 1%",
+    "Firefox ESR",
+    "last 2 versions",
+    "not dead",
+    "not op_mini all"
+  ],
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
@@ -14,5 +30,12 @@
     "@astrojs/rss": "^3.0.0",
     "@astrojs/sitemap": "^3.0.0",
     "astro": "^3.1.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.49.0",
+    "eslint-plugin-jsx-a11y": "^6.7.1",
+    "eslint-plugin-react": "^7.33.2",
+    "stylelint": "^15.10.3",
+    "stylelint-config-standard": "^34.0.0"
   }
 }

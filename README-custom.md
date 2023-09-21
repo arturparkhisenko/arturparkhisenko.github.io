@@ -4,14 +4,9 @@
 
 > No Third-Party Tracking, No Advertising Services, No Cookies
 
-## commands
-
-- `npm run start`
-- `npm run build`
-
 ## before build
 
-- inspect in devtools and audit (perf/a11y/manifest)
+- Inspect in devtools and audit (perf/a11y/manifest)
 
 ## after build
 
@@ -28,5 +23,6 @@
 ## to-do
 
 - [Low-tech](https://solar.lowtechmagazine.com/2018/09/how-to-build-a-lowtech-website/)
+- [sustyweb](https://w3c.github.io/sustyweb/)
 
 ## [MIT License](LICENSE)
