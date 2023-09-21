@@ -1,36 +1,18 @@
 {
-  "name": "arturparkhisenko",
-  "description": "personal website",
-  "version": "1.0.0",
-  "author": "Artur Parkhisenko <ikeagold@gmail.com> (https://arturparkhisenko.github.io/)",
-  "private": true,
-  "license": "MIT",
-  "homepage": "https://arturparkhisenko.github.io/",
-  "repository": "https://github.com/arturparkhisenko/arturparkhisenko.github.io",
-  "bugs": {
-    "url": "https://github.com/arturparkhisenko/arturparkhisenko.github.io/issues"
-  },
-  "browserslist": [
-    "> 1%",
-    "Firefox ESR",
-    "last 2 versions",
-    "not dead",
-    "not op_mini all"
-  ],
+  "name": "stellar-satellite",
+  "type": "module",
+  "version": "0.0.1",
   "scripts": {
-    "build": "parcel build",
-    "start": "parcel"
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
   },
-  "source": "./src/index.html",
-  "devDependencies": {
-    "@babel/core": "^7.21.8",
-    "@parcel/packager-raw-url": "^2.8.3",
-    "@parcel/transformer-webmanifest": "^2.8.3",
-    "eslint": "^8.40.0",
-    "eslint-plugin-jsx-a11y": "^6.7.1",
-    "eslint-plugin-react": "^7.32.2",
-    "parcel": "^2.8.3",
-    "stylelint": "^15.6.1",
-    "stylelint-config-standard": "^33.0.0"
+  "dependencies": {
+    "@astrojs/mdx": "^1.1.0",
+    "@astrojs/rss": "^3.0.0",
+    "@astrojs/sitemap": "^3.0.0",
+    "astro": "^3.1.1"
   }
 }
