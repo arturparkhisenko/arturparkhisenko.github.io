@@ -9,11 +9,95 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 <html lang="en">
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body>
+  </head>
+	<body itemscope itemtype="https://schema.org/Person">
 		<Header title={SITE_TITLE} />
-		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
+		<main class="screen">
+      <h1 itemprop="name">Artur Parkhisenko</h1>
+      <em>www. www always changes</em>
+      <br />
+      <span itemprop="jobTitle"><abbr title="Video Playback Experience">VPE</abbr> Engineer</span> 📹 ビデオ
+      <p>I love <abbr title="Open Source Software">OSS</abbr> ⚡</p>
+      <br />
+      <address>
+        <a itemprop="url" rel="noopener" href="https://github.com/arturparkhisenko">GitHub</a> <a itemprop="url"
+          rel="noopener" href="https://gist.github.com/arturparkhisenko">(Gists)</a>,
+        <a itemprop="url" rel="noopener" href="https://arturparkhisenko.github.io/blog/">My Blog</a>,
+        <a itemprop="url" rel="noopener" href="https://www.linkedin.com/in/artur-parkhisenko"
+          target="_blank">LinkedIn</a>,
+        <br />
+        <a itemprop="url" rel="noopener" href="https://codepen.io/arturparkhisenko" target="_blank">CodePen</a>,
+        <a itemprop="url" rel="noopener" href="https://speakerdeck.com/arturparkhisenko" target="_blank">Speaker
+          Deck</a>,
+        <a itemprop="url" rel="noopener" href="https://www.goodreads.com/user/show/63098005-artur-parkhisenko"
+          target="_blank">Goodreads</a>
+      </address>
+      <small>
+        <span class="small-urls" title="a weekly random image is on the background">the cake is a lie → 🍰</span>
+        <a href="https://www.thevenusproject.com/" target="_blank" rel="noopener" title="Life Is Strange"
+          class="small-urls">hole to another universe → 🕳️</a>
+      </small>
+      <script>
+        console.info('%c Hi! ;)', 'background: #333; color: #DCCD69');
+
+        const elBody = document.querySelector('body');
+
+        /**
+         * addEventListenerOnce
+         * @param {object} target
+         * @param {string} type
+         * @param {function} listener
+         */
+        const addEventListenerOnce = (target, type, listener) => {
+          target.addEventListener(
+            type,
+            function fn(event) {
+              target.removeEventListener(type, fn);
+              listener(event);
+            },
+            { once: true }
+          );
+        };
+
+        // background ---------------------------
+
+        const removeBg = () => {
+          document.body.classList.remove('background');
+          document.body.style.backgroundImage = '';
+          console.info('[Background] removed');
+        };
+
+        const setBg = () => {
+          if (navigator.onLine === false) {
+            console.warn("[Background] cannot load the background, you're offline");
+            return;
+          }
+
+          console.info('[Background] loading...');
+          document.body.classList.add('background');
+          // @see https://source.unsplash.com/
+          document.body.style.backgroundImage = `url('https://source.unsplash.com/weekly/?aesthetic')`;
+        };
+
+        const initBg = eventName => {
+          console.log(`Background update listener init by ${eventName} event`);
+
+          window.addEventListener('online', setBg);
+          window.addEventListener('offline', removeBg);
+          setBg();
+        };
+
+        // init bg ------------------------------
+
+        addEventListenerOnce(elBody, 'mouseover', () => {
+          initBg('mouseover');
+        });
+
+        addEventListenerOnce(elBody, 'touchstart', () => {
+          initBg('touchstart');
+        });
+      </script>
+			<!-- <h1>🧑‍🚀 Hello, Astronaut!</h1>
 			<p>
 				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This
 				template serves as a lightweight, minimally-styled starting point for anyone looking to
@@ -43,7 +127,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 					href="https://github.com/Charca/astro-blog-template"
 					>astro-blog-template
 				</a> by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
+			</p> -->
 		</main>
 		<Footer />
 	</body>
