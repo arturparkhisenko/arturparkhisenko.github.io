@@ -1,7 +1,6 @@
 ---
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 ---
 
@@ -12,6 +11,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
   </head>
 	<body itemscope itemtype="https://schema.org/Person">
 		<Header title={SITE_TITLE} />
+
 		<main class="screen">
       <h1 itemprop="name">Artur Parkhisenko</h1>
       <em>www. www always changes</em>
@@ -129,6 +129,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 				</a> by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
 			</p> -->
 		</main>
-		<Footer />
+
+		<!-- <Footer /> -->
 	</body>
 </html>
