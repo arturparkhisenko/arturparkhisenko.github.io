@@ -14,20 +14,24 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
     <Header title={SITE_TITLE} />
 
     <style>
-      #ua {
-        font-family: monospace;
-        font-size: 2rem;
+      .content {
         padding: 1rem;
       }
+      #ua {
+        font-family: monospace;
+        font-size: 1.2rem;
+      }
     </style>
-    <div id="ua">
-      <strong>window.navigator.userAgent:</strong>
-      <br />
-      <code id="code"></code>
-      <script>
-        document.getElementById('code').textContent =
-          window.navigator.userAgent;
-      </script>
+    <div class="content">
+      <div id="ua">
+        <strong>window.navigator.userAgent:</strong>
+        <br />
+        <code id="code"></code>
+        <script>
+          document.getElementById('code').textContent =
+            window.navigator.userAgent;
+        </script>
+      </div>
     </div>
 
     <Footer />
