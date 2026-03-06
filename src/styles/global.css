@@ -26,6 +26,7 @@ body {
 	overflow-wrap: break-word;
 	color: rgb(var(--gray-dark));
 	font-size: 20px;
+  font-size: calc(1rem + 0.25vw);
 	line-height: 1.7;
 }
 main {
